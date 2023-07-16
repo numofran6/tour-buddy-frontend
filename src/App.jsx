@@ -1,7 +1,12 @@
+import { Route, Routes } from 'react-router-dom';
+import { Home } from './views';
+
 function App() {
 	return (
 		<>
-			<div>App</div>
+			<Routes>
+				<Route path="/" element={<Home />} />
+			</Routes>
 		</>
 	);
 }

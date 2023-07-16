@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+	font-family: 'Poppins', sans-serif, 'Baskerville';
+	color: #081922;
+	background-color: #fcfcfc;
+	@apply px-7 lg:px-0;
+}
+
+.gb-transition {
+	@apply transition-all duration-300 ease-in-out;
+}
+
+.home-bg-color {
+	@apply bg-[#fcfcfc];
+}
+
+.max-w-container {
+	@apply max-w-[80rem] mx-auto;
+}
+
+.img-bg {
+	@apply bg-[#f2f4f5];
+}
