@@ -1,5 +1,4 @@
 import { SectionHeading, UnderlineBtn } from '../../shared/components';
-import { Button } from '@mui/material';
 import { advantages } from '../../shared/utils/data';
 
 export const Advantages = () => {
@@ -21,7 +20,7 @@ export const Advantages = () => {
 					{advantages.map((item, index) => (
 						<div
 							key={index}
-							className="space-y-3 bg-gray-300 p-5 h-[9.5rem] flex flex-col justify-between text-[#fcfcfc]"
+							className="space-y-3 bg-gray-300 p-5 h-[10rem] flex flex-col justify-between text-[#fcfcfc]"
 						>
 							<div>{item.icon}</div>
 

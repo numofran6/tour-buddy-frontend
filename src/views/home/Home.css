@@ -1,0 +1,4 @@
+.contact-input {
+	@apply w-1/2 border-b-2 border-gray-600 placeholder:text-gray-600 
+  placeholder:text-sm bg-[#081922] outline-none pb-2 focus:outline-none;
+}
