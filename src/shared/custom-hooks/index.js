@@ -1,3 +1,4 @@
 import { useScroll } from "./useScroll";
+import { useFetch } from "./useFetch";
 
-export { useScroll }
+export { useScroll, useFetch }

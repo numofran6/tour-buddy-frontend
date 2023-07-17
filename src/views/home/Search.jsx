@@ -26,8 +26,8 @@ export const Search = () => {
 	]);
 	const allRegions = ['Greater Accra', 'Kumasi', 'Volta'];
 	const numberOfTourists = ['10', '20', '30'];
-	const [region, setRegion] = useState('');
-	const [tourists, setTourists] = useState('');
+	const [region, setRegion] = useState(null);
+	const [tourists, setTourists] = useState(null);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();

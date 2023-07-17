@@ -1,12 +1,18 @@
 import { useRef } from 'react';
 import { SectionHeading, UnderlineBtn } from '../../shared/components';
 import { Button } from '@mui/material';
-import { useScroll } from '../../shared/custom-hooks';
+import { useFetch, useScroll } from '../../shared/custom-hooks';
+import { apiPath } from '../../shared/utils/urlPath';
 
 export const Regions = () => {
-	const scrollRegionsrRef = useRef(null);
+	const scrollRegionsRef = useRef(null);
 	const { scrollLeft, maxScroll, handleNextClick, handlePreviousClick } =
-		useScroll(scrollRegionsrRef, 300);
+		useScroll(scrollRegionsRef, 300);
+
+	const { data: allRegions, isLoading } = useFetch(
+		'get-regions',
+		`${apiPath}/regions`
+	);
 
 	return (
 		<>
@@ -24,10 +30,13 @@ export const Regions = () => {
 
 				<div
 					className="flex space-x-20 overflow-scroll hide-scrollbar ml-[10rem] pr-[10rem]"
-					ref={scrollRegionsrRef}
+					ref={scrollRegionsRef}
 				>
-					{Array.from({ length: 3 }).map((_, index) => (
-						<div key={index} className="w-[40rem] space-y-3 flex-shrink-0">
+					{allRegions?.map((region, i) => (
+						<div
+							key={region.name}
+							className="w-[40rem] space-y-3 flex-shrink-0"
+						>
 							<img
 								src=""
 								alt=""
@@ -35,7 +44,7 @@ export const Regions = () => {
 								loading="lazy"
 							/>
 
-							<h1 className="text-2xl">Isle of Skye</h1>
+							<h1 className="text-2xl">{region.name}</h1>
 
 							<p className="text-sm">
 								Lorem ipsum dolor sit amet consectetur, adipisicing elit.
