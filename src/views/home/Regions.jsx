@@ -32,32 +32,56 @@ export const Regions = () => {
 					className="flex space-x-20 overflow-scroll hide-scrollbar ml-[10rem] pr-[10rem]"
 					ref={scrollRegionsRef}
 				>
-					{allRegions?.map((region, i) => (
-						<div
-							key={region.name}
-							className="w-[40rem] space-y-3 flex-shrink-0"
-						>
-							<img
-								src=""
-								alt=""
-								className="img-bg w-full h-[18rem] object-cover"
-								loading="lazy"
-							/>
+					{isLoading
+						? Array.from({ length: 4 }).map((_, i) => (
+								<div key={i} className="w-[40rem] space-y-3 flex-shrink-0">
+									<img
+										src=""
+										alt=""
+										className="img-bg w-full h-[18rem] object-cover"
+										loading="lazy"
+									/>
 
-							<h1 className="text-2xl">{region.name}</h1>
+									<h1 className="text-2xl">Place holdername</h1>
 
-							<p className="text-sm">
-								Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-								Deleniti ullam repellat vitae consequatur error dolor est!
-								Fugiat quasi iste maxime, veritatis odio natus repudiandae,
-								maiores ex illo molestias commodi ratione!
-							</p>
+									<p className="text-sm">
+										Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+										Deleniti ullam repellat vitae consequatur error dolor est!
+										Fugiat quasi iste maxime, veritatis odio natus repudiandae,
+										maiores ex illo molestias commodi ratione!
+									</p>
 
-							<Button style={{ textTransform: 'inherit' }}>
-								<UnderlineBtn title="Read More" />
-							</Button>
-						</div>
-					))}
+									<Button style={{ textTransform: 'inherit' }}>
+										<UnderlineBtn title="Read More" />
+									</Button>
+								</div>
+						  ))
+						: allRegions?.map((region, i) => (
+								<div
+									key={region.name}
+									className="w-[40rem] space-y-3 flex-shrink-0"
+								>
+									<img
+										src=""
+										alt=""
+										className="img-bg w-full h-[18rem] object-cover"
+										loading="lazy"
+									/>
+
+									<h1 className="text-2xl">{region.name}</h1>
+
+									<p className="text-sm">
+										Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+										Deleniti ullam repellat vitae consequatur error dolor est!
+										Fugiat quasi iste maxime, veritatis odio natus repudiandae,
+										maiores ex illo molestias commodi ratione!
+									</p>
+
+									<Button style={{ textTransform: 'inherit' }}>
+										<UnderlineBtn title="Read More" />
+									</Button>
+								</div>
+						  ))}
 				</div>
 			</div>
 		</>
