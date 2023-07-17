@@ -2,3 +2,30 @@
 	@apply w-1/2 border-b-2 border-gray-600 placeholder:text-gray-600 
   placeholder:text-sm bg-[#081922] outline-none pb-2 focus:outline-none;
 }
+
+.date {
+	position: absolute;
+	top: 50px;
+	z-index: 2;
+}
+
+.search-input-label {
+	@apply flex items-center space-x-2 text-[#fcfcfc] uppercase text-xs
+		font-medium;
+}
+
+.search-input-icon {
+	@apply w-4 h-4;
+}
+
+.css-i4bv87-MuiSvgIcon-root {
+	@apply text-[#fcfcfc];
+}
+
+.css-ptiqhd-MuiSvgIcon-root {
+	@apply text-[#fcfcfc];
+}
+
+.css-1x51dt5-MuiInputBase-input-MuiInput-input {
+	@apply text-[#fcfcfc];
+}

@@ -5,6 +5,7 @@ import { Header } from './Header';
 import { HowItWorks } from './HowItWorks';
 import { Regions } from './Regions';
 import { Layout } from '../../shared/components';
+import { Search } from './Search';
 import './Home.css';
 
 export const Home = () => {
@@ -15,6 +16,10 @@ export const Home = () => {
 			<main>
 				<section className="py-20">
 					<Regions />
+				</section>
+
+				<section>
+					<Search />
 				</section>
 
 				<section>
