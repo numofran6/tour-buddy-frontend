@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { CiMapPin, CiMail } from 'react-icons/ci';
 import { BiPhone } from 'react-icons/bi';
 import { BsFacebook, BsInstagram, BsYoutube } from 'react-icons/bs';
+import { contactusimg } from '../../assets/images';
 
 export const ContactUs = () => {
 	const [showMessage, setShowMessage] = useState(false);
@@ -23,7 +24,7 @@ export const ContactUs = () => {
 	return (
 		<>
 			<div className="flex bg-[#081922] text-[#fcfcfc]">
-				<div className="space-y-10 py-10 ml-[7.7rem] w-1/2">
+				<div className="space-y-10 py-10 ml-[7.7rem] w-1/2 h-[100vh]">
 					<div className="space-y-5">
 						<div className="flex items-center space-x-3">
 							<div className="border-b-2 w-10 border-[#fcfcfc]" />
@@ -102,8 +103,12 @@ export const ContactUs = () => {
 					</form>
 				</div>
 
-				<div className="bg-[#295B5F] w-1/2">
-					<img src="" alt="" className="w-full h-full object-cover" />
+				<div className="bg-[#295B5F] w-1/2 h-[100vh]">
+					<img
+						src={contactusimg}
+						alt="Contact Us Cover"
+						className="w-full h-full object-cover"
+					/>
 				</div>
 			</div>
 		</>

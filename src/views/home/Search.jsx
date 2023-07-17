@@ -34,7 +34,7 @@ export const Search = () => {
 	};
 
 	return (
-		<div className="py-16 bg-[#295B5F] text-[#fcfcfc] flex flex-col items-center space-y-8">
+		<div className="py-20 bg-[#295B5F] text-[#fcfcfc] flex flex-col items-center space-y-8">
 			<h1 className="font-heading uppercase text-3xl text-center max-w-3xl">
 				Get a 20% discount on the first booking of any tour
 			</h1>

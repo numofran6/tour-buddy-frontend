@@ -1,7 +1,13 @@
+import { useRef } from 'react';
 import { SectionHeading, UnderlineBtn } from '../../shared/components';
 import { Button } from '@mui/material';
+import { useScroll } from '../../shared/custom-hooks';
 
 export const Regions = () => {
+	const scrollRegionsrRef = useRef(null);
+	const { scrollLeft, maxScroll, handleNextClick, handlePreviousClick } =
+		useScroll(scrollRegionsrRef, 300);
+
 	return (
 		<>
 			<div className="space-y-10">
@@ -13,9 +19,13 @@ export const Regions = () => {
 					description={
 						'Immerse yourself in the culture of Ghana through locals, learn the history, visit the most beautiful places, create memories that you will never forget in your life.'
 					}
+					{...{ maxScroll, scrollLeft, handlePreviousClick, handleNextClick }}
 				/>
 
-				<div className="flex space-x-20 overflow-hidden ml-[10rem]">
+				<div
+					className="flex space-x-20 overflow-scroll hide-scrollbar ml-[10rem] pr-[10rem]"
+					ref={scrollRegionsrRef}
+				>
 					{Array.from({ length: 3 }).map((_, index) => (
 						<div key={index} className="w-[40rem] space-y-3 flex-shrink-0">
 							<img

@@ -1,3 +1,4 @@
+import { howitworks } from '../../assets/images';
 import { ProgressUI, SectionHeading } from '../../shared/components';
 
 export const HowItWorks = () => {
@@ -18,7 +19,11 @@ export const HowItWorks = () => {
 							}
 						/>
 
-						<img src="" alt="" className="img-bg w-full h-[18rem]" />
+						<img
+							src={howitworks}
+							alt=""
+							className="img-bg w-full h-[18rem] object-cover object-bottom"
+						/>
 					</div>
 
 					<div className="w-1/2 flex flex-col justify-between">

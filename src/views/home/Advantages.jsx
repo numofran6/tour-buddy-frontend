@@ -20,13 +20,16 @@ export const Advantages = () => {
 					{advantages.map((item, index) => (
 						<div
 							key={index}
-							className="space-y-3 bg-gray-300 p-5 h-[10rem] flex flex-col justify-between text-[#fcfcfc]"
+							className="space-y-3 bg-gray-300 h-[10rem] bg-cover relative"
+							style={{ backgroundImage: `url(${item.img})` }}
 						>
-							<div>{item.icon}</div>
+							<div className="absolute inset-0 bg-black bg-opacity-50 text-[#fcfcfc] flex flex-col justify-between p-5">
+								<div>{item.icon}</div>
 
-							<h1 className="text-lg">{item.title}</h1>
+								<h1 className="text-lg">{item.title}</h1>
 
-							<p className="text-xs">{item.description}</p>
+								<p className="text-xs">{item.description}</p>
+							</div>
 						</div>
 					))}
 				</div>

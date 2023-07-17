@@ -26,7 +26,7 @@ export const Home = () => {
 					<HowItWorks />
 				</section>
 
-				<section className="py-40">
+				<section className="pt-40 pb-10">
 					<Featured />
 				</section>
 
