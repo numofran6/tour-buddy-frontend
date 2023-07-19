@@ -2,7 +2,6 @@ import { CustomSkeleton, SectionHeading } from '../../shared/components';
 import { IconButton, Rating } from '@mui/material';
 import { useRef } from 'react';
 import { PiMapPinLineThin } from 'react-icons/pi';
-import { MdStarRate } from 'react-icons/md';
 import { useFetch, useScroll } from '../../shared/custom-hooks';
 import { BsPeople } from 'react-icons/bs';
 
@@ -15,7 +14,7 @@ export const Featured = () => {
 		data: featuredDestinations,
 		isLoading,
 		isError,
-	} = useFetch('get-featuredDestinations', '/destinations');
+	} = useFetch('get-featuredDestinations', '/destinations?featured=true');
 
 	return (
 		<>

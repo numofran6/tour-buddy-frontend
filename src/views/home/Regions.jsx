@@ -66,7 +66,7 @@ export const Regions = () => {
 									<p className="text-sm">{region.desc.slice(0, 225)}...</p>
 
 									<Button style={{ textTransform: 'inherit' }}>
-										<UnderlineBtn title="Read More" />
+										<UnderlineBtn title="Book Now" />
 									</Button>
 								</div>
 						  ))}

@@ -9,14 +9,18 @@ import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import {
 	Autocomplete,
+	CircularProgress,
 	IconButton,
 	InputAdornment,
 	Stack,
 	TextField,
 } from '@mui/material';
+import axios from 'axios';
+import { apiPath } from '../../shared/utils/urlPath';
 
 export const Search = () => {
 	const [openDate, setOpenDate] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
 	const [dates, setDates] = useState([
 		{
 			startDate: new Date(),
@@ -24,13 +28,37 @@ export const Search = () => {
 			key: 'selection',
 		},
 	]);
-	const allRegions = ['Greater Accra', 'Kumasi', 'Volta'];
-	const numberOfTourists = ['10', '20', '30'];
+	const allRegions = [
+		'Greater Accra Region',
+		'Volta Region',
+		'Western Region',
+		'Northern Region',
+	];
+	const numberOfTourists = ['1-10', '11-20', '21-30'];
 	const [region, setRegion] = useState(null);
-	const [tourists, setTourists] = useState(null);
+	const [maxTourists, setMaxTourists] = useState(null);
 
-	const handleSubmit = (e) => {
+	const validateForm = () => {
+		return true;
+	};
+
+	const handleSubmit = async (e) => {
 		e.preventDefault();
+
+		if (validateForm()) {
+			setIsLoading(true);
+			const maxPeople = maxTourists.split('-');
+			const min = maxPeople[0];
+			const max = ++maxPeople[1];
+
+			const data = await axios
+				.get(`${apiPath}/destinations/?min=${min}&max=${max}&region=${region}`)
+				.then((res) => res.data);
+
+			setMaxTourists(null);
+			setRegion(null);
+			setIsLoading(false);
+		}
 	};
 
 	return (
@@ -131,8 +159,8 @@ export const Search = () => {
 								}}
 							/>
 						)}
-						value={tourists}
-						onChange={(e, newValue) => setTourists(newValue)}
+						value={maxTourists}
+						onChange={(e, newValue) => setMaxTourists(newValue)}
 					/>
 				</Stack>
 
@@ -141,7 +169,11 @@ export const Search = () => {
 					style={{ color: '#fcfcfc', backgroundColor: '#081921' }}
 					className="w-24 h-24 rounded-full flex flex-col justify-center"
 				>
-					<p className="text-xs uppercase text-center">Search Tour</p>
+					{isLoading ? (
+						<CircularProgress sx={{ color: '#f4eaf4' }} size={24} />
+					) : (
+						<p className="text-xs uppercase text-center">Search Tour</p>
+					)}
 				</IconButton>
 			</form>
 		</div>
