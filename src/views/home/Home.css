@@ -37,6 +37,31 @@
 
 /* Hide scrollbar for IE, Edge, and Firefox */
 .hide-scrollbar {
-	-ms-overflow-style: none; /* IE and Edge */
-	scrollbar-width: none; /* Firefox */
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.regions-container {
+	@apply flex space-x-20 overflow-scroll ml-[10rem] pr-[10rem];
+}
+
+.regions-content {
+	@apply w-[40rem] space-y-3 flex-shrink-0;
+}
+
+.featured-container-info {
+	@apply absolute -left-56 -bottom-10 
+	w-[21rem] h-[15rem] p-5 bg-[#081922] 
+	text-[#fcfcfc] z-10 flex flex-col 
+	justify-between;
+}
+
+.featured-container-btn {
+	@apply w-28 h-28 rounded-full 
+	flex flex-col justify-center;
+}
+
+.featured-skeleton-btn {
+	@apply absolute -bottom-8 -right-16 
+	w-28 h-28 rounded-full overflow-hidden;
 }

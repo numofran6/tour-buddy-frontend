@@ -1,13 +1,21 @@
-import { SectionHeading } from '../../shared/components';
-import { IconButton } from '@mui/material';
+import { CustomSkeleton, SectionHeading } from '../../shared/components';
+import { IconButton, Rating } from '@mui/material';
 import { useRef } from 'react';
 import { PiMapPinLineThin } from 'react-icons/pi';
-import { useScroll } from '../../shared/custom-hooks';
+import { MdStarRate } from 'react-icons/md';
+import { useFetch, useScroll } from '../../shared/custom-hooks';
+import { BsPeople } from 'react-icons/bs';
 
 export const Featured = () => {
 	const scrollFeaturedRef = useRef(null);
 	const { scrollLeft, maxScroll, handleNextClick, handlePreviousClick } =
 		useScroll(scrollFeaturedRef);
+
+	const {
+		data: featuredDestinations,
+		isLoading,
+		isError,
+	} = useFetch('get-featuredDestinations', '/destinations');
 
 	return (
 		<>
@@ -27,50 +35,85 @@ export const Featured = () => {
 					className="flex space-x-80 overflow-x-scroll hide-scrollbar px-72"
 					ref={scrollFeaturedRef}
 				>
-					{Array.from({ length: 3 }).map((_, index) => (
-						<div key={index} className="flex-shrink-0 h-[30rem]">
-							<div className="relative">
-								<img
-									src=""
-									alt=""
-									className="w-[45rem] img-bg h-[25rem] object-cover"
-									loading="lazy"
-								/>
+					{isLoading || isError
+						? Array.from({ length: 4 }).map((_, index) => (
+								<div key={index} className="flex-shrink-0 h-[30rem]">
+									<div className="relative">
+										<CustomSkeleton width={720} height={400} />
 
-								<div className="absolute -left-56 -bottom-10 w-[20rem] h-[15rem] p-5 bg-[#081922] text-[#fcfcfc] z-10 flex flex-col justify-between">
-									<div className="flex items-center justify-between">
-										<h1 className="text-2xl flex items-center">
-											<PiMapPinLineThin className="mr-1" /> Isle of Skye
-										</h1>
+										<div className="absolute -left-56 -bottom-10 w-[20rem] h-[15rem]">
+											<CustomSkeleton
+												width="100%"
+												height="100%"
+												background="#081922"
+											/>
 
-										<h4>7 Days</h4>
-									</div>
-
-									<p className="text-xs">
-										Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-										Deleniti ullam repellat vitae consequatur error dolor est!
-										Fugiat quasi iste maxime, veritatis odio natus repudiandae,
-										maiores ex illo molestias commodi ratione!
-									</p>
-
-									<div className="flex justify-start text-sm ">
-										<h6>
-											Price: <span className="font-semibold">$700</span>
-										</h6>
-									</div>
-
-									<div className="absolute -bottom-8 -right-16">
-										<IconButton
-											style={{ color: '#fcfcfc', backgroundColor: '#295B5F' }}
-											className="w-28 h-28 rounded-full flex flex-col justify-center"
-										>
-											<p className="text-sm">Book Now</p>
-										</IconButton>
+											<div className="featured-skeleton-btn">
+												<CustomSkeleton
+													width="100%"
+													height="100%"
+													background="#295B5F"
+												/>
+											</div>
+										</div>
 									</div>
 								</div>
-							</div>
-						</div>
-					))}
+						  ))
+						: featuredDestinations.map((item, index) => (
+								<div key={index} className="flex-shrink-0 h-[30rem]">
+									<div className="relative">
+										<img
+											src=""
+											alt=""
+											className="w-[45rem] img-bg h-[25rem] object-cover"
+											loading="lazy"
+										/>
+
+										<div className="featured-container-info">
+											<div className="flex items-center justify-between">
+												<h1 className="text-xl flex items-center">
+													<PiMapPinLineThin className="mr-1" /> {item.title}
+												</h1>
+
+												<h4 className="text-sm flex items-center">
+													{item.maxPeople} <BsPeople className="ml-1 w-5 h-5" />
+												</h4>
+											</div>
+
+											<div className="flex items-center">
+												<Rating
+													value={item.rating}
+													precision={0.5}
+													size="small"
+													readOnly
+													className="mr-1"
+												/>
+											</div>
+
+											<p className="text-xs">{item.desc.slice(0, 220)}...</p>
+
+											<div className="flex justify-start text-sm ">
+												<h6>
+													Price:{' '}
+													<span className="font-semibold">${item.price}</span>
+												</h6>
+											</div>
+
+											<div className="absolute -bottom-8 -right-16">
+												<IconButton
+													style={{
+														color: '#fcfcfc',
+														backgroundColor: '#295B5F',
+													}}
+													className="featured-container-btn"
+												>
+													<p className="text-sm">Book Now</p>
+												</IconButton>
+											</div>
+										</div>
+									</div>
+								</div>
+						  ))}
 				</div>
 			</div>
 		</>

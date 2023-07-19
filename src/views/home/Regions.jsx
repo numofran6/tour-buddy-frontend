@@ -1,18 +1,22 @@
 import { useRef } from 'react';
-import { SectionHeading, UnderlineBtn } from '../../shared/components';
+import {
+	CustomSkeleton,
+	SectionHeading,
+	UnderlineBtn,
+} from '../../shared/components';
 import { Button } from '@mui/material';
 import { useFetch, useScroll } from '../../shared/custom-hooks';
-import { apiPath } from '../../shared/utils/urlPath';
 
 export const Regions = () => {
 	const scrollRegionsRef = useRef(null);
 	const { scrollLeft, maxScroll, handleNextClick, handlePreviousClick } =
 		useScroll(scrollRegionsRef, 300);
 
-	const { data: allRegions, isLoading } = useFetch(
-		'get-regions',
-		`${apiPath}/regions`
-	);
+	const {
+		data: allRegions,
+		isLoading,
+		isError,
+	} = useFetch('get-regions', '/regions');
 
 	return (
 		<>
@@ -29,38 +33,27 @@ export const Regions = () => {
 				/>
 
 				<div
-					className="flex space-x-20 overflow-scroll hide-scrollbar ml-[10rem] pr-[10rem]"
+					className="regions-container hide-scrollbar"
 					ref={scrollRegionsRef}
 				>
-					{isLoading
+					{isLoading || isError
 						? Array.from({ length: 4 }).map((_, i) => (
-								<div key={i} className="w-[40rem] space-y-3 flex-shrink-0">
-									<img
-										src=""
-										alt=""
-										className="img-bg w-full h-[18rem] object-cover"
-										loading="lazy"
-									/>
+								<div key={i} className="regions-content ">
+									<CustomSkeleton height={288} />
 
-									<h1 className="text-2xl">Place holdername</h1>
+									<CustomSkeleton variant="text" height={60} width="35%" />
 
-									<p className="text-sm">
-										Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-										Deleniti ullam repellat vitae consequatur error dolor est!
-										Fugiat quasi iste maxime, veritatis odio natus repudiandae,
-										maiores ex illo molestias commodi ratione!
-									</p>
+									<div>
+										<CustomSkeleton variant="text" />
+										<CustomSkeleton variant="text" />
+										<CustomSkeleton variant="text" />
+									</div>
 
-									<Button style={{ textTransform: 'inherit' }}>
-										<UnderlineBtn title="Read More" />
-									</Button>
+									<CustomSkeleton height={50} width={120} />
 								</div>
 						  ))
 						: allRegions?.map((region, i) => (
-								<div
-									key={region.name}
-									className="w-[40rem] space-y-3 flex-shrink-0"
-								>
+								<div key={region.name} className="regions-content ">
 									<img
 										src=""
 										alt=""
@@ -70,12 +63,7 @@ export const Regions = () => {
 
 									<h1 className="text-2xl">{region.name}</h1>
 
-									<p className="text-sm">
-										Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-										Deleniti ullam repellat vitae consequatur error dolor est!
-										Fugiat quasi iste maxime, veritatis odio natus repudiandae,
-										maiores ex illo molestias commodi ratione!
-									</p>
+									<p className="text-sm">{region.desc.slice(0, 225)}...</p>
 
 									<Button style={{ textTransform: 'inherit' }}>
 										<UnderlineBtn title="Read More" />
