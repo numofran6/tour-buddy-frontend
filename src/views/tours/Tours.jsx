@@ -4,10 +4,27 @@ import { Layout, Map, TourPreview } from '../../shared/components';
 import { SearchTourForm } from './SearchTourForm';
 import { BsEmojiHeartEyes, BsPatchCheck } from 'react-icons/bs';
 import { Box, MenuItem, TextField } from '@mui/material';
+import { useLocation } from 'react-router-dom';
 import './Tours.css';
 
 export const Tours = () => {
+	const location = useLocation();
+	const [destinations, setDestinations] = useState(
+		location?.state?.destinations
+	);
+	// const [dates, setDates] = useState(location.state.dates);
+	// const [openDate, setOpenDate] = useState(false);
+	// const [options, setOptions] = useState(location.state.options);
+	// const [min, setMin] = useState(undefined);
+	// const [max, setMax] = useState(undefined);
+
+	// const { data, loading, error, reFetch } = useFetch(
+	//   `/hotels?city=${destination}&min=${min || 0 }&max=${max || 999}`
+	// );
+
 	const [sort, setSort] = useState('');
+
+	console.log(destinations);
 
 	const handleChange = (event) => {
 		setSort(event.target.value);
