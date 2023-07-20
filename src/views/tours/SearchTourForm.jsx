@@ -1,4 +1,13 @@
+import { Box, Slider } from '@mui/material';
+import { useState } from 'react';
+
 export const SearchTourForm = () => {
+	const [numberOfVisitors, setNumberOfVisitors] = useState([1, 50]);
+
+	const handleVistiorsChange = (event, newValue) => {
+		setNumberOfVisitors(newValue);
+	};
+
 	return (
 		<form className="p-5 py-1 text-sm bg-white sidebar-border">
 			<div className="form-group border-b border-gray-100">
@@ -10,7 +19,7 @@ export const SearchTourForm = () => {
 							type="radio"
 							name="region"
 							id="region"
-							value="Greate Accra Region"
+							value="Greater Accra Region"
 						/>
 						<span>Greater Accra</span>
 					</label>
@@ -69,27 +78,6 @@ export const SearchTourForm = () => {
 			</div>
 
 			<div className="form-group border-b border-gray-100">
-				<h1 className="form-group-heading">Number of People</h1>
-
-				<div className="form-group-content">
-					<label className="label-item">
-						<input type="radio" name="maxPeople" value="0-10" />
-						<span>0 - 10</span>
-					</label>
-
-					<label className="label-item">
-						<input type="radio" name="maxPeople" value="11-20" />
-						<span>11 - 20</span>
-					</label>
-
-					<label className="label-item">
-						<input type="radio" name="maxPeople" value="21-30" />
-						<span>21 - 30</span>
-					</label>
-				</div>
-			</div>
-
-			<div className="form-group">
 				<h1 className="form-group-heading">Price</h1>
 
 				<div className="form-group-content">
@@ -109,6 +97,32 @@ export const SearchTourForm = () => {
 					</label>
 				</div>
 			</div>
+
+			<div className="form-group">
+				<h1 className="form-group-heading">Number of Visitors</h1>
+
+				<div className="flex items-center space-x-5">
+					<h4 className="number-of-visitors">{numberOfVisitors[0]}</h4>
+
+					<Box sx={{ width: 200 }}>
+						<Slider
+							getAriaLabel={() => 'Number of people range'}
+							getAriaValueText={valuetext}
+							value={numberOfVisitors}
+							onChange={handleVistiorsChange}
+							valueLabelDisplay="auto"
+							min={1}
+							max={50}
+						/>
+					</Box>
+
+					<h4 className="number-of-visitors">{numberOfVisitors[1]}</h4>
+				</div>
+			</div>
 		</form>
 	);
 };
+
+function valuetext(value) {
+	return value;
+}
