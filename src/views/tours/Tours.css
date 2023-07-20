@@ -1,0 +1,35 @@
+.label-item {
+	@apply space-x-2 cursor-pointer text-[1rem] font-extralight;
+}
+
+.form-group {
+	@apply space-y-3 py-7;
+}
+
+.form-group-heading {
+	@apply font-bold;
+}
+
+.form-group-content {
+	@apply flex flex-col space-y-2;
+}
+
+.sidebar-border {
+	@apply border border-gray-50 rounded-md;
+}
+
+.tag-icon {
+	@apply w-10 h-10;
+}
+
+.tag-title {
+	@apply font-extralight;
+}
+
+.tag-item {
+	@apply flex items-center space-x-2;
+}
+
+.css-ahj2mt-MuiTypography-root {
+	@apply font-extralight text-sm;
+}

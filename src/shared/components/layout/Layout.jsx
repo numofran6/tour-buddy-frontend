@@ -26,7 +26,7 @@ export const Layout = ({ children }) => {
 		<>
 			<nav className="flex items-center justify-between max-w-container py-5">
 				<Link to={'/'} className="flex items-center space-x-3 relative">
-					<h4 className="uppercase font-bold text-xl text-[#B35C00] z-10 bg-[#fcfcfc] bg-opacity-70">
+					<h4 className="uppercase font-bold text-xl text-[#B35C00] z-10 bg-[#fcfcfc] bg-opacity-90">
 						Tour Buddy
 					</h4>
 					<img
