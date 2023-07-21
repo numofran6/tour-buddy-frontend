@@ -10,17 +10,21 @@ import {
 	TextField,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { useDestinationContext } from '../../shared/context/destinationsContext';
 
 export const Search = () => {
+	const navigate = useNavigate();
+	const {
+		setSelectedRegions,
+		setNumberOfVisitors,
+		setSelectedActivities,
+		regionsOptions,
+		activitiesOptions,
+	} = useDestinationContext();
 	const [isLoading, setIsLoading] = useState(false);
-	const allRegions = [
-		'Greater Accra Region',
-		'Volta Region',
-		'Western Region',
-		'Northern Region',
-	];
-	const numberOfTourists = ['1-10', '11-20', '21-30'];
-	const allActivities = ['Hiking', 'Parks', 'Beach', 'Long Walk'];
+
+	const numberOfTourists = ['1 - 25', '25 - 50'];
+
 	const [region, setRegion] = useState(null);
 	const [activity, setActivity] = useState(null);
 	const [maxTourists, setMaxTourists] = useState(null);
@@ -29,8 +33,6 @@ export const Search = () => {
 		activity: false,
 		maxTourists: false,
 	});
-
-	const navigate = useNavigate();
 
 	const validateForm = () => {
 		if (region && activity && maxTourists) {
@@ -58,10 +60,11 @@ export const Search = () => {
 		if (validateForm()) {
 			setIsLoading(true);
 			const maxPeople = maxTourists.split('-');
-			const min = maxPeople[0];
-			const max = ++maxPeople[1];
+			setNumberOfVisitors(maxPeople);
+			setSelectedRegions([region]);
+			setSelectedActivities([activity]);
 
-			navigate('/tours', { state: { region, min, max, activity } });
+			navigate('/tours');
 
 			setMaxTourists(null);
 			setRegion(null);
@@ -86,7 +89,7 @@ export const Search = () => {
 			<form onSubmit={handleSubmit} className="flex items-center space-x-12">
 				<Stack width="200px">
 					<Autocomplete
-						options={allRegions}
+						options={regionsOptions.map((region) => region.value)}
 						renderInput={(params) => (
 							<TextField
 								{...params}
@@ -114,7 +117,7 @@ export const Search = () => {
 
 				<Stack width="200px">
 					<Autocomplete
-						options={allActivities}
+						options={activitiesOptions.map((region) => region.label)}
 						renderInput={(params) => (
 							<TextField
 								{...params}
@@ -183,60 +186,3 @@ export const Search = () => {
 		</div>
 	);
 };
-
-/**DATE
- * 
-import 'react-date-range/dist/styles.css';
-import 'react-date-range/dist/theme/default.css';
-	const [openDate, setOpenDate] = useState(false);
-	const [dates, setDates] = useState([
-		{
-			startDate: new Date(),
-			endDate: new Date(),
-			key: 'selection',
-		},
-	]);
- <div className="relative">
-					<Stack width="200px">
-						<span onClick={() => setOpenDate(!openDate)}>
-							<TextField
-								fullWidth
-								variant="standard"
-								label={
-									<div className="search-input-label">
-										<SlCalender className="search-input-icon" />{' '}
-										<span>Select Date</span>
-									</div>
-								}
-								InputProps={{
-									endAdornment: (
-										<InputAdornment position="end">
-											<AiOutlineCaretDown
-												className={`text-[#fcfcfc] w-[0.8rem] h-[0.8rem] ${
-													openDate && 'rotate-180'
-												}`}
-											/>
-										</InputAdornment>
-									),
-								}}
-								style={{
-									borderBottom: '1px solid white',
-								}}
-							/>
-						</span>
-					</Stack>
-					{openDate && (
-						<DateRange
-							editableDateInputs={true}
-							onChange={(item) => {
-								setOpenDate(false);
-								setDates([item.selection]);
-							}}
-							moveRangeOnFirstSelection={false}
-							ranges={dates}
-							className="date"
-							minDate={new Date()}
-						/>
-					)}
-				</div>
- */

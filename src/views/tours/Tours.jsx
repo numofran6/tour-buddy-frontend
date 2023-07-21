@@ -1,17 +1,14 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AiOutlineDollar, AiOutlineLock } from 'react-icons/ai';
 import { Layout, Map, TourPreview } from '../../shared/components';
 import { SearchTourForm } from './SearchTourForm';
 import { BsEmojiHeartEyes, BsPatchCheck } from 'react-icons/bs';
 import { Box, MenuItem, TextField } from '@mui/material';
-import { useLocation } from 'react-router-dom';
 import { useFetch } from '../../shared/custom-hooks';
-import './Tours.css';
 import { useDestinationContext } from '../../shared/context/destinationsContext';
+import './Tours.css';
 
 export const Tours = () => {
-	const location = useLocation();
-
 	const {
 		sort,
 		setSort,
