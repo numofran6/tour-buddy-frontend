@@ -1,121 +1,78 @@
 import { Box, Slider } from '@mui/material';
-import { useState } from 'react';
 
-export const SearchTourForm = () => {
-	const [numberOfVisitors, setNumberOfVisitors] = useState([1, 50]);
-
-	const handleVistiorsChange = (event, newValue) => {
-		setNumberOfVisitors(newValue);
+export const SearchTourForm = ({
+	numberOfVisitors,
+	setNumberOfVisitors,
+	selectedRegions,
+	setSelectedRegions,
+	selectedActivities,
+	setSelectedActivities,
+	selectedPrices,
+	setSelectedPrices,
+	regionsOptions,
+	activitiesOptions,
+	pricesOptions,
+}) => {
+	const handleCheckboxChange = (e, setSelectedState) => {
+		const value = e.target.value;
+		setSelectedState((prevSelectedState) => {
+			if (prevSelectedState.includes(value)) {
+				return prevSelectedState.filter(
+					(selectedValue) => selectedValue !== value
+				);
+			} else {
+				return [...prevSelectedState, value];
+			}
+		});
 	};
 
 	return (
 		<form className="p-5 py-1 text-sm bg-white sidebar-border">
 			<div className="form-group border-b border-gray-100">
 				<h1 className="form-group-heading">Region</h1>
-
-				<div className="form-group-content">
-					<label className="label-item">
-						<input
-							type="radio"
-							name="region"
-							id="region"
-							value="Greater Accra Region"
-						/>
-						<span>Greater Accra</span>
-					</label>
-
-					<label className="label-item">
-						<input
-							type="radio"
-							name="region"
-							id="region"
-							value="Volta Region"
-						/>
-						<span>Volta</span>
-					</label>
-
-					<label className="label-item">
-						<input
-							type="radio"
-							name="region"
-							id="region"
-							value="Northern Region"
-						/>
-						<span>Northern</span>
-					</label>
-
-					<label className="label-item">
-						<input
-							type="radio"
-							name="region"
-							id="region"
-							value="Western Region"
-						/>
-						<span>Western</span>
-					</label>
-				</div>
+				<FormCheckboxGroup
+					name="region"
+					options={regionsOptions}
+					selectedValues={selectedRegions}
+					onChange={(e) => handleCheckboxChange(e, setSelectedRegions)}
+				/>
 			</div>
 
 			<div className="form-group border-b border-gray-100">
 				<h1 className="form-group-heading">Type of Activity</h1>
-
-				<div className="form-group-content">
-					<label className="label-item">
-						<input type="checkbox" name="activity" value="park" />
-						<span>Park</span>
-					</label>
-
-					<label className="label-item">
-						<input type="checkbox" name="activity" value="beach" />
-						<span>Beach</span>
-					</label>
-
-					<label className="label-item">
-						<input type="checkbox" name="activity" value="walk" />
-						<span>Long Walk</span>
-					</label>
-				</div>
+				<FormCheckboxGroup
+					name="activity"
+					options={activitiesOptions}
+					selectedValues={selectedActivities}
+					onChange={(e) => handleCheckboxChange(e, setSelectedActivities)}
+				/>
 			</div>
 
 			<div className="form-group border-b border-gray-100">
 				<h1 className="form-group-heading">Price</h1>
-
-				<div className="form-group-content">
-					<label className="label-item">
-						<input type="radio" name="price" value="0-20" />
-						<span>Less than $20</span>
-					</label>
-
-					<label className="label-item">
-						<input type="radio" name="price" value="20-50" />
-						<span>$20 - $50</span>
-					</label>
-
-					<label className="label-item">
-						<input type="radio" name="price" value="50-9999" />
-						<span>Above $50</span>
-					</label>
-				</div>
+				<FormCheckboxGroup
+					name="price"
+					options={pricesOptions}
+					selectedValues={selectedPrices}
+					onChange={(e) => handleCheckboxChange(e, setSelectedPrices)}
+				/>
 			</div>
 
 			<div className="form-group">
 				<h1 className="form-group-heading">Number of Visitors</h1>
-
 				<div className="flex items-center space-x-5">
 					<h4 className="number-of-visitors">{numberOfVisitors[0]}</h4>
-
 					<Box sx={{ width: 200 }}>
 						<Slider
 							getAriaLabel={() => 'Number of people range'}
-							getAriaValueText={valuetext}
+							getAriaValueText={(value) => value}
 							value={numberOfVisitors}
-							onChange={handleVistiorsChange}
+							onChange={(e, newValue) => setNumberOfVisitors(newValue)}
 							valueLabelDisplay="auto"
 							min={1}
 							max={50}
 						/>
 					</Box>
-
 					<h4 className="number-of-visitors">{numberOfVisitors[1]}</h4>
 				</div>
 			</div>
@@ -123,6 +80,21 @@ export const SearchTourForm = () => {
 	);
 };
 
-function valuetext(value) {
-	return value;
+function FormCheckboxGroup({ name, options, selectedValues, onChange }) {
+	return (
+		<div className="form-group-content">
+			{options.map((option) => (
+				<label key={option.value} className="label-item">
+					<input
+						type="checkbox"
+						name={name}
+						value={option.value}
+						checked={selectedValues.includes(option.value)}
+						onChange={onChange}
+					/>
+					<span>{option.label}</span>
+				</label>
+			))}
+		</div>
+	);
 }
