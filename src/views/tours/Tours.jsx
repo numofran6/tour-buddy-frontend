@@ -9,9 +9,8 @@ import './Tours.css';
 
 export const Tours = () => {
 	const location = useLocation();
-	const [destinations, setDestinations] = useState(
-		location?.state?.destinations
-	);
+	const [sort, setSort] = useState('');
+	const [region, setRegion] = useState(location.state?.region);
 	// const [dates, setDates] = useState(location.state.dates);
 	// const [openDate, setOpenDate] = useState(false);
 	// const [options, setOptions] = useState(location.state.options);
@@ -21,10 +20,6 @@ export const Tours = () => {
 	// const { data, loading, error, reFetch } = useFetch(
 	//   `/hotels?city=${destination}&min=${min || 0 }&max=${max || 999}`
 	// );
-
-	const [sort, setSort] = useState('');
-
-	console.log(destinations);
 
 	const handleChange = (event) => {
 		setSort(event.target.value);

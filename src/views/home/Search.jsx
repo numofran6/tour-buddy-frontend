@@ -2,8 +2,6 @@ import { useState } from 'react';
 import { SlLocationPin } from 'react-icons/sl';
 import { RxPerson } from 'react-icons/rx';
 import { GoTelescope } from 'react-icons/go';
-import 'react-date-range/dist/styles.css';
-import 'react-date-range/dist/theme/default.css';
 import {
 	Autocomplete,
 	CircularProgress,
@@ -11,8 +9,6 @@ import {
 	Stack,
 	TextField,
 } from '@mui/material';
-import axios from 'axios';
-import { apiPath } from '../../shared/utils/urlPath';
 import { useNavigate } from 'react-router-dom';
 
 export const Search = () => {
@@ -65,18 +61,11 @@ export const Search = () => {
 			const min = maxPeople[0];
 			const max = ++maxPeople[1];
 
-			const destinations = await axios
-				.get(
-					`${apiPath}/destinations/?min=${min}&max=${max}&region=${region}&activity=${activity}`
-				)
-				.then((res) => res.data);
-
-			if (destinations) {
-				navigate('/tours', { state: { destinations, min, max } });
-			}
+			navigate('/tours', { state: { region, min, max, activity } });
 
 			setMaxTourists(null);
 			setRegion(null);
+			setActivity(null);
 		} else {
 			setIsLoading(false);
 		}
@@ -197,6 +186,8 @@ export const Search = () => {
 
 /**DATE
  * 
+import 'react-date-range/dist/styles.css';
+import 'react-date-range/dist/theme/default.css';
 	const [openDate, setOpenDate] = useState(false);
 	const [dates, setDates] = useState([
 		{
