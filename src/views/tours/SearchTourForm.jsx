@@ -1,18 +1,21 @@
 import { Box, Slider } from '@mui/material';
+import { useDestinationContext } from '../../shared/context/destinationsContext';
 
-export const SearchTourForm = ({
-	numberOfVisitors,
-	setNumberOfVisitors,
-	selectedRegions,
-	setSelectedRegions,
-	selectedActivities,
-	setSelectedActivities,
-	selectedPrices,
-	setSelectedPrices,
-	regionsOptions,
-	activitiesOptions,
-	pricesOptions,
-}) => {
+export const SearchTourForm = () => {
+	const {
+		numberOfVisitors,
+		setNumberOfVisitors,
+		selectedRegions,
+		setSelectedRegions,
+		selectedActivities,
+		setSelectedActivities,
+		selectedPrices,
+		setSelectedPrices,
+		regionsOptions,
+		activitiesOptions,
+		pricesOptions,
+	} = useDestinationContext();
+
 	const handleCheckboxChange = (e, setSelectedState) => {
 		const value = e.target.value;
 		setSelectedState((prevSelectedState) => {
