@@ -10,6 +10,10 @@ export const DestinationProvider = ({ children }) => {
 	}
 
 	function createPriceQueryString(selectedPrices) {
+		if (selectedPrices.length === 0) {
+			return '';
+		}
+
 		const sortedPrices = selectedPrices.sort(
 			(a, b) => Number(a.split('-')[0]) - Number(b.split('-')[0])
 		);

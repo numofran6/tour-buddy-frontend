@@ -6,7 +6,7 @@ export const useFetch = (id, url) => {
   return useQuery([id], () => {
     return axios.get(`${apiPath}${url}`).then((res) => res.data);
   }, {
-    refetchOnMount: false,
+    // refetchOnMount: false,
     refetchOnWindowFocus: false
   });
 };
