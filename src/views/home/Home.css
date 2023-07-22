@@ -58,7 +58,7 @@
 
 .featured-container-btn {
 	@apply w-28 h-28 rounded-full 
-	flex flex-col justify-center;
+	flex flex-col justify-center items-center;
 }
 
 .featured-skeleton-btn {

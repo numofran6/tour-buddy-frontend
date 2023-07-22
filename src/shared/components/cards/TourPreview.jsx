@@ -1,8 +1,10 @@
 import { Button, Rating } from '@mui/material';
 import { GrLocationPin } from 'react-icons/gr';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export const TourPreview = ({ item }) => {
+	const navigate = useNavigate();
+
 	return (
 		<div className="h-[15rem] bg-white w-full rounded-md sidebar-border grid grid-cols-3 overflow-hidden">
 			<div className="col-span-1 h-full w-full img-bg"></div>
@@ -28,12 +30,14 @@ export const TourPreview = ({ item }) => {
 				<div className="flex items-center justify-between">
 					<h6 className="text-xl font-semibold">${item.price}</h6>
 
-					<Link
-						to={`/destinations/${item._id}`}
+					<Button
+						onClick={() =>
+							navigate(`/tour/${item.title}`, { state: { tour: item } })
+						}
 						className="text-blue-600 uppercase"
 					>
-						Book Now
-					</Link>
+						View More
+					</Button>
 				</div>
 			</div>
 		</div>

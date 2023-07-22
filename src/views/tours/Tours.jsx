@@ -4,11 +4,16 @@ import { SearchTourForm } from './SearchTourForm';
 import { BsEmojiHeartEyes, BsPatchCheck } from 'react-icons/bs';
 import { Box, MenuItem, TextField } from '@mui/material';
 import { useDestinationContext } from '../../shared/context/destinationsContext';
-import './Tours.css';
 import { SearchTourResult } from './SearchTourResult';
+import { useEffect } from 'react';
+import './Tours.css';
 
 export const Tours = () => {
 	const { sort, setSort } = useDestinationContext();
+
+	useEffect(() => {
+		window.scroll(0, 0);
+	});
 
 	return (
 		<Layout>

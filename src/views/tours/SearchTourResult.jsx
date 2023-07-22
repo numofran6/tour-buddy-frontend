@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useFetch } from '../../shared/custom-hooks';
 import { useDestinationContext } from '../../shared/context/destinationsContext';
 import { TourPreview } from '../../shared/components';
-import { Button, CircularProgress, IconButton } from '@mui/material';
+import { Button, CircularProgress } from '@mui/material';
 import { BsChevronLeft, BsChevronRight, BsEmojiFrown } from 'react-icons/bs';
 
 export const SearchTourResult = () => {

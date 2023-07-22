@@ -4,11 +4,13 @@ import { useRef } from 'react';
 import { PiMapPinLineThin } from 'react-icons/pi';
 import { useFetch, useScroll } from '../../shared/custom-hooks';
 import { BsPeople } from 'react-icons/bs';
+import { useNavigate } from 'react-router-dom';
 
 export const Featured = () => {
 	const scrollFeaturedRef = useRef(null);
 	const { scrollLeft, maxScroll, handleNextClick, handlePreviousClick } =
 		useScroll(scrollFeaturedRef);
+	const navigate = useNavigate();
 
 	const {
 		data: featuredDestinations,
@@ -104,6 +106,11 @@ export const Featured = () => {
 														color: '#fcfcfc',
 														backgroundColor: '#295B5F',
 													}}
+													onClick={() =>
+														navigate(`/tour/${item.title}`, {
+															state: { tour: item },
+														})
+													}
 													className="featured-container-btn"
 												>
 													<p className="text-sm">Book Now</p>

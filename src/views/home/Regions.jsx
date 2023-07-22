@@ -6,17 +6,26 @@ import {
 } from '../../shared/components';
 import { Button } from '@mui/material';
 import { useFetch, useScroll } from '../../shared/custom-hooks';
+import { useDestinationContext } from '../../shared/context/destinationsContext';
+import { useNavigate } from 'react-router-dom';
 
 export const Regions = () => {
 	const scrollRegionsRef = useRef(null);
 	const { scrollLeft, maxScroll, handleNextClick, handlePreviousClick } =
 		useScroll(scrollRegionsRef, 300);
+	const { setSelectedRegions } = useDestinationContext();
+	const navigate = useNavigate();
 
 	const {
 		data: allRegions,
 		isLoading,
 		isError,
 	} = useFetch('get-regions', '/regions');
+
+	const handleRegionClick = (regionName) => {
+		setSelectedRegions([regionName]);
+		navigate('/tours');
+	};
 
 	return (
 		<>
@@ -65,7 +74,10 @@ export const Regions = () => {
 
 									<p className="text-sm">{region.desc.slice(0, 225)}...</p>
 
-									<Button style={{ textTransform: 'inherit' }}>
+									<Button
+										onClick={() => handleRegionClick(region.name)}
+										style={{ textTransform: 'inherit' }}
+									>
 										<UnderlineBtn title="Book Now" />
 									</Button>
 								</div>

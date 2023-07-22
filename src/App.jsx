@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { Home, Tours } from './views';
+import { Home, TourDetails, Tours } from './views';
 
 function App() {
 	return (
@@ -7,6 +7,7 @@ function App() {
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/tours" element={<Tours />} />
+				<Route path="/tour/:tourid" element={<TourDetails />} />
 			</Routes>
 		</>
 	);
