@@ -1,24 +1,158 @@
 import { FaMapPin } from 'react-icons/fa';
 import { Layout } from '../../shared/components';
-import { Button, IconButton } from '@mui/material';
+import {
+	Box,
+	FormControl,
+	IconButton,
+	InputLabel,
+	MenuItem,
+	Select,
+	TextField,
+} from '@mui/material';
 import { useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
-import { BsEmojiFrownFill } from 'react-icons/bs';
+import { useEffect, useRef, useState } from 'react';
+import { BsEmojiFrownFill, BsFillPersonFill } from 'react-icons/bs';
+import { LiaHikingSolid } from 'react-icons/lia';
+import { TfiClose } from 'react-icons/tfi';
+import 'react-date-range/dist/styles.css';
+import 'react-date-range/dist/theme/default.css';
+import { SlCalender } from 'react-icons/sl';
+import { DateRange } from 'react-date-range';
+import './TourDetails.css';
+import { AiOutlineMail } from 'react-icons/ai';
+import { format } from 'date-fns';
 
 export const TourDetails = () => {
 	const location = useLocation();
 	const tour = location.state?.tour;
 
+	const [openDate, setOpenDate] = useState(false);
+	const [dates, setDates] = useState([
+		{
+			startDate: new Date(),
+			endDate: new Date(),
+			key: 'selection',
+		},
+	]);
+	const [age, setAge] = useState('');
+	const dateRangeRef = useRef();
+
+	const handleChange = (event) => {
+		setAge(event.target.value);
+	};
+
 	useEffect(() => {
 		window.scroll(0, 0);
+	}, []);
+
+	useEffect(() => {
+		const handleClickOutside = (event) => {
+			if (
+				dateRangeRef.current &&
+				!dateRangeRef.current.contains(event.target)
+			) {
+				setOpenDate(false);
+			}
+		};
+
+		window.addEventListener('click', handleClickOutside);
+		return () => {
+			window.removeEventListener('click', handleClickOutside);
+		};
 	}, []);
 
 	if (!tour) {
 		return (
 			<Layout>
-				<div className="min-h-[60vh] flex flex-col items-center justify-center space-y-5">
+				<div className="h-[60vh] flex flex-col items-center justify-center space-y-5">
 					<BsEmojiFrownFill className="w-20 h-20" />
 					<h1 className="text-4xl font-heading">404. TOUR NOT FOUND</h1>
+				</div>
+
+				<div className="book-tour-modal">
+					<div className="book-tour-modal-container">
+						<div className="flex justify-end mb-10">
+							<button>
+								<TfiClose className="modal-close-btn" />
+							</button>
+						</div>
+
+						<form className="space-y-7 w-[80%] mx-auto">
+							<TextField
+								fullWidth
+								label={
+									<label className="flex items-center space-x-3">
+										<AiOutlineMail className="w-5 h-5" />{' '}
+										<span>Email Address</span>
+									</label>
+								}
+								variant="filled"
+							/>
+
+							<div className="relative">
+								<label
+									onClick={(event) => {
+										event.stopPropagation();
+										setOpenDate(!openDate);
+									}}
+									className="flex items-center space-x-3"
+								>
+									<div>
+										<SlCalender className="w-5 h-5" /> <span>Select Date</span>
+									</div>{' '}
+									<span>
+										{format(dates[0].startDate, 'dd MMMM')} -{' '}
+										{format(dates[0].endDate, 'dd MMMM')}
+									</span>
+								</label>
+								{openDate && (
+									<div ref={dateRangeRef}>
+										<DateRange
+											editableDateInputs={true}
+											onChange={(item) => {
+												setOpenDate(false);
+												setDates([item.selection]);
+											}}
+											moveRangeOnFirstSelection={false}
+											ranges={dates}
+											className="date"
+											minDate={new Date()}
+										/>
+									</div>
+								)}
+							</div>
+
+							<TextField
+								select
+								label={
+									<label className="flex items-center space-x-3">
+										<LiaHikingSolid className="w-5 h-5" />{' '}
+										<span>Select Guide</span>
+									</label>
+								}
+								value={age}
+								onChange={handleChange}
+								fullWidth
+								variant="filled"
+							>
+								<MenuItem value={10}>
+									<img src="" alt="" className="img-bg w-10 h-10 mr-2" />{' '}
+									<span>Name Here</span>
+								</MenuItem>
+								<MenuItem value={20}>Twenty</MenuItem>
+							</TextField>
+
+							<div className="flex justify-end w-full">
+								<IconButton
+									type="submit"
+									style={{ color: '#fcfcfc', backgroundColor: '#295B5F' }}
+									className="book-now-btn"
+								>
+									<p className="book-now-btn-text">Book Tour</p>
+								</IconButton>
+							</div>
+						</form>
+					</div>
 				</div>
 			</Layout>
 		);
@@ -40,9 +174,9 @@ export const TourDetails = () => {
 
 					<IconButton
 						style={{ color: '#fcfcfc', backgroundColor: '#295B5F' }}
-						className="w-24 h-24 rounded-full flex flex-col justify-center"
+						className="book-now-btn"
 					>
-						<p className="text-xs uppercase text-center">Book Tour</p>
+						<p className="book-now-btn-text">Book Tour</p>
 					</IconButton>
 				</div>
 
