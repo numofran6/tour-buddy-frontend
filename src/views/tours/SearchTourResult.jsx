@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useFetch } from '../../shared/custom-hooks';
 import { useDestinationContext } from '../../shared/context/destinationsContext';
 import { TourPreview } from '../../shared/components';
@@ -25,6 +25,7 @@ export const SearchTourResult = () => {
 			numberOfVisitors
 		)
 	);
+	const resultsRef = useRef(null);
 
 	const {
 		isLoading,
@@ -55,10 +56,9 @@ export const SearchTourResult = () => {
 	const handleNextPage = () => {
 		if (currentPage < totalPages) {
 			setCurrentPage((prevPage) => prevPage + 1);
-			window.scrollTo({
-				top: 300,
-				left: 0,
+			resultsRef?.current.scrollIntoView({
 				behavior: 'smooth',
+				block: 'start',
 			});
 		}
 	};
@@ -66,10 +66,9 @@ export const SearchTourResult = () => {
 	const handlePrevPage = () => {
 		if (currentPage > 1) {
 			setCurrentPage((prevPage) => prevPage - 1);
-			window.scrollTo({
-				top: 300,
-				left: 0,
+			resultsRef?.current.scrollIntoView({
 				behavior: 'smooth',
+				block: 'start',
 			});
 		}
 	};
@@ -95,7 +94,7 @@ export const SearchTourResult = () => {
 	}, [destinationUrl]);
 
 	return (
-		<div className="col-span-2 p-5 pr-0 space-y-8">
+		<div className="col-span-2 p-5 pr-0" ref={resultsRef}>
 			{isLoading || isError ? (
 				<div className="flex justify-center">
 					<CircularProgress sx={{ color: '#081922' }} size={40} />
@@ -110,7 +109,7 @@ export const SearchTourResult = () => {
 					</h4>
 				</div>
 			) : (
-				<>
+				<div className="space-y-8">
 					{getCurrentPageItems().map((item, i) => (
 						<div key={i}>
 							<TourPreview item={item} />
@@ -144,7 +143,7 @@ export const SearchTourResult = () => {
 							<BsChevronRight className="my-2 w-5 h-5" />
 						</Button>
 					</div>
-				</>
+				</div>
 			)}
 		</div>
 	);
