@@ -52,7 +52,7 @@ export const DestinationProvider = ({ children }) => {
 
 		const queryParams = [
 			selectedRegionsQueryString,
-			// selectedActivitiesQueryString,
+			selectedActivitiesQueryString,
 			priceQueryString,
 			visitorsQueryString,
 		];
@@ -69,9 +69,10 @@ export const DestinationProvider = ({ children }) => {
 	];
 
 	const activitiesOptions = [
-		{ value: 'park', label: 'Park' },
-		{ value: 'beach', label: 'Beach' },
-		{ value: 'walk', label: 'Long Walk' },
+		{ value: 'nature', label: 'Nature' },
+		{ value: 'history', label: 'History' },
+		{ value: 'traditional', label: 'Traditional' },
+		{ value: 'groove', label: 'Groove' },
 	];
 
 	const pricesOptions = [

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useFetch } from '../../shared/custom-hooks';
 import { useDestinationContext } from '../../shared/context/destinationsContext';
 import { TourPreview } from '../../shared/components';
-import { CircularProgress } from '@mui/material';
-import { BsEmojiFrown } from 'react-icons/bs';
+import { Button, CircularProgress, IconButton } from '@mui/material';
+import { BsChevronLeft, BsChevronRight, BsEmojiFrown } from 'react-icons/bs';
 
 export const SearchTourResult = () => {
 	const {
@@ -31,6 +31,39 @@ export const SearchTourResult = () => {
 		data: destinations,
 		refetch,
 	} = useFetch('get-destinations', destinationUrl);
+
+	// Pagination
+	const [currentPage, setCurrentPage] = useState(1);
+	const itemsPerPage = 4;
+	const totalPages = Math.ceil(destinations?.length / itemsPerPage);
+
+	const getCurrentPageItems = () => {
+		const startIndex = (currentPage - 1) * itemsPerPage;
+		const endIndex = startIndex + itemsPerPage;
+		return destinations.slice(startIndex, endIndex);
+	};
+
+	const handleNextPage = () => {
+		if (currentPage < totalPages) {
+			setCurrentPage((prevPage) => prevPage + 1);
+			window.scrollTo({
+				top: 300,
+				left: 0,
+				behavior: 'smooth',
+			});
+		}
+	};
+
+	const handlePrevPage = () => {
+		if (currentPage > 1) {
+			setCurrentPage((prevPage) => prevPage - 1);
+			window.scrollTo({
+				top: 300,
+				left: 0,
+				behavior: 'smooth',
+			});
+		}
+	};
 
 	useEffect(() => {
 		const newDestinationUrl = createDestinationUrl(
@@ -68,11 +101,41 @@ export const SearchTourResult = () => {
 					</h4>
 				</div>
 			) : (
-				destinations.map((item, i) => (
-					<div key={i}>
-						<TourPreview item={item} />
+				<>
+					{getCurrentPageItems().map((item, i) => (
+						<div key={i}>
+							<TourPreview item={item} />
+						</div>
+					))}
+
+					<div className="pt-1" />
+
+					<div className="flex items-center justify-center space-x-10">
+						<Button
+							disabled={currentPage === 1}
+							onClick={handlePrevPage}
+							style={{ backgroundColor: 'white' }}
+							size="large"
+							className={`${currentPage > 1 && 'shadow'}`}
+						>
+							<BsChevronLeft className="my-2 w-5 h-5" />
+						</Button>
+
+						<p className="text-center text-gray-500">
+							Page {currentPage} of {totalPages}
+						</p>
+
+						<Button
+							disabled={currentPage === totalPages}
+							onClick={handleNextPage}
+							style={{ backgroundColor: 'white' }}
+							size="large"
+							className={`${currentPage < totalPages && 'shadow'}`}
+						>
+							<BsChevronRight className="my-2 w-5 h-5" />
+						</Button>
 					</div>
-				))
+				</>
 			)}
 		</div>
 	);
