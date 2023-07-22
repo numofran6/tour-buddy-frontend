@@ -12,6 +12,7 @@ export const SearchTourResult = () => {
 		selectedActivities,
 		selectedPrices,
 		createDestinationUrl,
+		sort,
 	} = useDestinationContext();
 
 	const url = '/destinations';
@@ -38,9 +39,17 @@ export const SearchTourResult = () => {
 	const totalPages = Math.ceil(destinations?.length / itemsPerPage);
 
 	const getCurrentPageItems = () => {
+		const sortedDestinations = [...destinations];
+
+		if (sort === 'low to high') {
+			sortedDestinations.sort((a, b) => a.price - b.price);
+		} else if (sort === 'high to low') {
+			sortedDestinations.sort((a, b) => b.price - a.price);
+		}
+
 		const startIndex = (currentPage - 1) * itemsPerPage;
 		const endIndex = startIndex + itemsPerPage;
-		return destinations.slice(startIndex, endIndex);
+		return sortedDestinations.slice(startIndex, endIndex);
 	};
 
 	const handleNextPage = () => {
