@@ -1,61 +1,14 @@
-import { useEffect, useState } from 'react';
 import { AiOutlineDollar, AiOutlineLock } from 'react-icons/ai';
-import { Layout, Map, TourPreview } from '../../shared/components';
+import { Layout, Map } from '../../shared/components';
 import { SearchTourForm } from './SearchTourForm';
 import { BsEmojiHeartEyes, BsPatchCheck } from 'react-icons/bs';
 import { Box, MenuItem, TextField } from '@mui/material';
-import { useFetch } from '../../shared/custom-hooks';
 import { useDestinationContext } from '../../shared/context/destinationsContext';
 import './Tours.css';
+import { SearchTourResult } from './SearchTourResult';
 
 export const Tours = () => {
-	const {
-		sort,
-		setSort,
-		numberOfVisitors,
-		selectedRegions,
-		selectedActivities,
-		selectedPrices,
-		createDestinationUrl,
-	} = useDestinationContext();
-
-	const url = '/destinations';
-	const [destinationUrl, setDestinationUrl] = useState(
-		createDestinationUrl(
-			url,
-			selectedRegions,
-			selectedActivities,
-			selectedPrices,
-			numberOfVisitors
-		)
-	);
-
-	const {
-		isLoading,
-		isError,
-		data: destinations,
-		refetch,
-	} = useFetch('get-destinations', destinationUrl);
-
-	useEffect(() => {
-		const newDestinationUrl = createDestinationUrl(
-			url,
-			selectedRegions,
-			selectedActivities,
-			selectedPrices,
-			numberOfVisitors
-		);
-		setDestinationUrl(newDestinationUrl);
-	}, [
-		url,
-		selectedRegions,
-		selectedActivities,
-		selectedPrices,
-		numberOfVisitors,
-	]);
-	useEffect(() => {
-		refetch();
-	}, [destinationUrl]);
+	const { sort, setSort } = useDestinationContext();
 
 	return (
 		<Layout>
@@ -113,19 +66,7 @@ export const Tours = () => {
 							<SearchTourForm />
 						</div>
 
-						<div className="col-span-2 p-5 pr-0 space-y-8">
-							{isLoading || isError ? (
-								<>
-									<p>loading</p>
-								</>
-							) : (
-								destinations.map((item, i) => (
-									<div key={i}>
-										<TourPreview item={item} />
-									</div>
-								))
-							)}
-						</div>
+						<SearchTourResult />
 					</div>
 				</section>
 			</main>
