@@ -35,6 +35,7 @@ export const TourDetails = () => {
 		},
 	]);
 	const [age, setAge] = useState('');
+	const [openModal, setOpenModal] = useState(false);
 	const dateRangeRef = useRef();
 
 	const handleChange = (event) => {
@@ -66,93 +67,7 @@ export const TourDetails = () => {
 			<Layout>
 				<div className="h-[60vh] flex flex-col items-center justify-center space-y-5">
 					<BsEmojiFrownFill className="w-20 h-20" />
-					<h1 className="text-4xl font-heading">404. TOUR NOT FOUND</h1>
-				</div>
-
-				<div className="book-tour-modal">
-					<div className="book-tour-modal-container">
-						<div className="flex justify-end mb-10">
-							<button>
-								<TfiClose className="modal-close-btn" />
-							</button>
-						</div>
-
-						<form className="space-y-7 w-[80%] mx-auto">
-							<TextField
-								fullWidth
-								label={
-									<label className="flex items-center space-x-3">
-										<AiOutlineMail className="w-5 h-5" />{' '}
-										<span>Email Address</span>
-									</label>
-								}
-								variant="filled"
-							/>
-
-							<div className="relative">
-								<label
-									onClick={(event) => {
-										event.stopPropagation();
-										setOpenDate(!openDate);
-									}}
-									className="flex items-center space-x-3"
-								>
-									<div>
-										<SlCalender className="w-5 h-5" /> <span>Select Date</span>
-									</div>{' '}
-									<span>
-										{format(dates[0].startDate, 'dd MMMM')} -{' '}
-										{format(dates[0].endDate, 'dd MMMM')}
-									</span>
-								</label>
-								{openDate && (
-									<div ref={dateRangeRef}>
-										<DateRange
-											editableDateInputs={true}
-											onChange={(item) => {
-												setOpenDate(false);
-												setDates([item.selection]);
-											}}
-											moveRangeOnFirstSelection={false}
-											ranges={dates}
-											className="date"
-											minDate={new Date()}
-										/>
-									</div>
-								)}
-							</div>
-
-							<TextField
-								select
-								label={
-									<label className="flex items-center space-x-3">
-										<LiaHikingSolid className="w-5 h-5" />{' '}
-										<span>Select Guide</span>
-									</label>
-								}
-								value={age}
-								onChange={handleChange}
-								fullWidth
-								variant="filled"
-							>
-								<MenuItem value={10}>
-									<img src="" alt="" className="img-bg w-10 h-10 mr-2" />{' '}
-									<span>Name Here</span>
-								</MenuItem>
-								<MenuItem value={20}>Twenty</MenuItem>
-							</TextField>
-
-							<div className="flex justify-end w-full">
-								<IconButton
-									type="submit"
-									style={{ color: '#fcfcfc', backgroundColor: '#295B5F' }}
-									className="book-now-btn"
-								>
-									<p className="book-now-btn-text">Book Tour</p>
-								</IconButton>
-							</div>
-						</form>
-					</div>
+					<h1 className="text-4xl font-heading">404 TOUR NOT FOUND</h1>
 				</div>
 			</Layout>
 		);
@@ -173,6 +88,7 @@ export const TourDetails = () => {
 					<p className="max-w-3xl text-sm text-[#295B5F]">{tour?.desc}</p>
 
 					<IconButton
+						onClick={() => setOpenModal(true)}
 						style={{ color: '#fcfcfc', backgroundColor: '#295B5F' }}
 						className="book-now-btn"
 					>
@@ -191,6 +107,99 @@ export const TourDetails = () => {
 						</div>
 					))}
 				</div>
+
+				{openModal && (
+					<div className="book-tour-modal">
+						<div className="book-tour-modal-container">
+							<div className="flex justify-end mb-10">
+								<button onClick={() => setOpenModal(false)}>
+									<TfiClose className="modal-close-btn" />
+								</button>
+							</div>
+
+							<form className="space-y-7 w-[80%] mx-auto">
+								<TextField
+									fullWidth
+									label={
+										<label className="flex items-center space-x-3">
+											<AiOutlineMail className="w-5 h-5" />{' '}
+											<span>Email Address</span>
+										</label>
+									}
+									variant="filled"
+								/>
+
+								<TextField
+									select
+									label={
+										<label className="flex items-center space-x-3">
+											<LiaHikingSolid className="w-5 h-5" />{' '}
+											<span>Select Guide</span>
+										</label>
+									}
+									value={age}
+									onChange={handleChange}
+									fullWidth
+									variant="filled"
+								>
+									<MenuItem value={10}>
+										<img src="" alt="" className="img-bg w-10 h-10 mr-2" />{' '}
+										<span>Name Here</span>
+									</MenuItem>
+									<MenuItem value={20}>Twenty</MenuItem>
+								</TextField>
+
+								<div className="relative">
+									<div className="flex items-center space-x-3 border border-gray-300 rounded-t">
+										<div
+											onClick={(event) => {
+												event.stopPropagation();
+												setOpenDate(!openDate);
+											}}
+											className="p-3 py-4 bg-gray-200 cursor-pointer"
+										>
+											<SlCalender className="calender-icon" />
+										</div>
+										<div className="flex flex-col">
+											<label className="text-xs text-gray-700">
+												Select Date
+											</label>
+											<span>
+												{format(dates[0].startDate, 'dd MMMM')} -{' '}
+												{format(dates[0].endDate, 'dd MMMM')}
+											</span>
+										</div>
+									</div>
+									{openDate && (
+										<div ref={dateRangeRef}>
+											<DateRange
+												editableDateInputs={true}
+												onChange={(item) => {
+													setOpenDate(false);
+													setDates([item.selection]);
+												}}
+												moveRangeOnFirstSelection={false}
+												ranges={dates}
+												className="date"
+												minDate={new Date()}
+											/>
+										</div>
+									)}
+								</div>
+
+								<div className="flex justify-end w-full">
+									<IconButton
+										type="submit"
+										style={{ color: '#fcfcfc', backgroundColor: '#295B5F' }}
+										className="book-now-btn"
+									>
+										<p className="book-now-btn-text">Book Tour</p>
+									</IconButton>
+								</div>
+							</form>
+						</div>
+					</div>
+				)}
 			</main>
 		</Layout>
 	);

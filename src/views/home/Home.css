@@ -3,12 +3,6 @@
   placeholder:text-sm bg-[#081922] outline-none pb-2 focus:outline-none;
 }
 
-.date {
-	position: absolute;
-	top: 50px;
-	z-index: 2;
-}
-
 .search-input-label {
 	@apply flex items-center space-x-2 text-[#fcfcfc] uppercase text-xs
 		font-medium;
