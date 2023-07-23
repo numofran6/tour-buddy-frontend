@@ -23,15 +23,11 @@ export const Layout = ({ children }) => {
 	return (
 		<>
 			<nav className="flex items-center justify-between max-w-container py-5">
-				<Link to={'/'} className="flex items-center space-x-3 relative">
-					<h4 className="uppercase font-bold text-xl text-[#B35C00] z-10 bg-[#fcfcfc] bg-opacity-90">
-						Tour Buddy
-					</h4>
-					{/* <img
-						src={logo}
-						alt="Logo"
-						className="w-10 h-10 absolute z-0 -top-4 left-1/2 transform -translate-x-1/2"
-					/> */}
+				<Link
+					to={'/'}
+					className="uppercase font-bold text-xl text-[#B35C00] z-10"
+				>
+					Tour Buddy
 				</Link>
 
 				<div className="flex items-center text-sm font-semibold gb-transition space-x-9">
