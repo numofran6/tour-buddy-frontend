@@ -16,7 +16,7 @@ export const BookedTours = () => {
 		<>
 			{tours ? (
 				<Layout>
-					<main className="max-w-container min-h-[70vh] py-8">
+					<main className="max-w-container min-h-[70vh] py-8 mb-20">
 						<div className="mb-16 space-y-1">
 							<h1 className="text-6xl font-semibold font-heading">
 								Manage Booked Tours

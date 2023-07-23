@@ -114,7 +114,7 @@ export const TourDetails = () => {
 		<>
 			{tour ? (
 				<Layout>
-					<main className="max-w-container space-y-5 py-3">
+					<main className="max-w-container space-y-5 py-3 mb-20">
 						<div>
 							<h1 className="font-heading text-5xl">{tour?.title}</h1>
 							<h4 className="flex items-center space-x-1 text-xl">
