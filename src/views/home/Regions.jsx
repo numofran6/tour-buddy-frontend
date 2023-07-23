@@ -64,9 +64,10 @@ export const Regions = () => {
 						: allRegions?.map((region, i) => (
 								<div key={region.name} className="regions-content ">
 									<img
-										src=""
+										onClick={() => handleRegionClick(region.name)}
+										src={region.image}
 										alt=""
-										className="img-bg w-full h-[18rem] object-cover"
+										className="img-bg w-full h-[22rem] object-cover cursor-pointer"
 										loading="lazy"
 									/>
 
@@ -78,7 +79,7 @@ export const Regions = () => {
 										onClick={() => handleRegionClick(region.name)}
 										style={{ textTransform: 'inherit' }}
 									>
-										<UnderlineBtn title="Book Now" />
+										<UnderlineBtn title="Explore Now" />
 									</Button>
 								</div>
 						  ))}
