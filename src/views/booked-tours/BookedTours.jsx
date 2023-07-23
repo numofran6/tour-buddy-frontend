@@ -9,14 +9,15 @@ import './BookedTours.css';
 export const BookedTours = () => {
 	const {
 		states: { tours },
+		dispatch,
 	} = useBookedToursContext();
 
 	return (
 		<>
 			{tours ? (
 				<Layout>
-					<main className="max-w-container min-h-[70vh] py-3">
-						<div className="mt-8 mb-16 space-y-1">
+					<main className="max-w-container min-h-[70vh] py-8">
+						<div className="mb-16 space-y-1">
 							<h1 className="text-6xl font-semibold font-heading">
 								Manage Booked Tours
 							</h1>
@@ -29,7 +30,7 @@ export const BookedTours = () => {
 						<div className="grid grid-cols-2 gap-20">
 							{tours?.map((tour) => (
 								<div key={tour.title}>
-									<BookedTourPreview item={tour} />
+									<BookedTourPreview item={tour} dispatch={dispatch} />
 								</div>
 							))}
 						</div>
