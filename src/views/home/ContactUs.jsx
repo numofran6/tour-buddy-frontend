@@ -52,7 +52,7 @@ export const ContactUs = () => {
 								<BiPhone className="w-7 h-7 mr-2" /> +233 70 248 6090
 							</h6>
 							<h6 className="flex items-center">
-								<CiMail className="w-7 h-7 mr-2" /> travelist@tourbuddy.com
+								<CiMail className="w-7 h-7 mr-2" /> info@tourbuddy.com
 							</h6>
 						</div>
 

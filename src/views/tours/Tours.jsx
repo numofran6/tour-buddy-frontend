@@ -19,7 +19,7 @@ export const Tours = () => {
 		<Layout>
 			<main>
 				<section>
-					<div className="max-w-container mt-16 mb-4 space-y-9">
+					<div className="max-w-container mt-8 mb-4 space-y-9">
 						<div className="flex items-center justify-between">
 							<h1 className="text-6xl font-semibold font-heading">
 								Explore Through Locals

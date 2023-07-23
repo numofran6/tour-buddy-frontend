@@ -1,0 +1,4 @@
+.booked-tour-preview {
+	@apply bg-[#081922] text-[#fcfcfc] p-7 min-h-[22rem] 
+  space-y-3 flex flex-col justify-center;
+}

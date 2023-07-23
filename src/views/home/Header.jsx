@@ -1,6 +1,8 @@
+import { Search } from './Search';
+
 export const Header = () => {
 	return (
-		<header className="home-bg-color min-h-[100vh]">
+		<header className="home-bg-color">
 			<div className="max-w-container flex flex-col justify-end space-y-7 pt-14 pb-10">
 				<h1 className="text-7xl uppercase font-medium font-heading">
 					Discover the real{' '}
@@ -15,9 +17,12 @@ export const Header = () => {
 				</p>
 			</div>
 
-			<div className="h-[60vh]">
+			{/* <div className="h-[60vh]">
 				<img src="" alt="" className="h-full w-full img-bg object-cover" />
-			</div>
+			</div> */}
+			<section>
+				<Search />
+			</section>
 		</header>
 	);
 };

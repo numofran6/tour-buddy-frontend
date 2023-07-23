@@ -3,6 +3,11 @@
   placeholder:text-sm bg-[#081922] outline-none pb-2 focus:outline-none;
 }
 
+.search-container {
+	@apply py-20 min-h-[60vh] bg-[#295B5F] text-[#fcfcfc] 
+	flex flex-col items-center justify-center space-y-8;
+}
+
 .search-input-label {
 	@apply flex items-center space-x-2 text-[#fcfcfc] uppercase text-xs
 		font-medium;

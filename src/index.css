@@ -24,3 +24,8 @@ body {
 .img-bg {
 	@apply bg-[#f2f4f5];
 }
+
+.no-page-container {
+	@apply h-[70vh] bg-white flex flex-col 
+	items-center justify-center space-y-5;
+}

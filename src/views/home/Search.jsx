@@ -75,17 +75,7 @@ export const Search = () => {
 	};
 
 	return (
-		<div className="py-20 bg-[#295B5F] text-[#fcfcfc] flex flex-col items-center space-y-8">
-			<h1 className="font-heading uppercase text-3xl text-center max-w-3xl">
-				Get a 20% discount on the first booking of any tour
-			</h1>
-
-			<p className="max-w-2xl text-sm text-center">
-				When booking any of the tours, use the promo code FIRSTTOUR to apply the
-				discount. Note that the discount works only once and only during the
-				first booking!
-			</p>
-
+		<div className="search-container">
 			<form onSubmit={handleSubmit} className="flex items-center space-x-12">
 				<Stack width="200px">
 					<Autocomplete

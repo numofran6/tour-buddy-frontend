@@ -10,14 +10,12 @@ export const Layout = ({ children }) => {
 		if (isActive) {
 			return {
 				color: '#B35C00',
-				backgroundColor: 'white',
-				padding: '0.5rem 1rem',
-				borderRadius: '0.375rem',
+				padding: '0.5rem 0',
+				borderBottom: '1px solid #B35C00',
 			};
 		} else {
 			return {
-				padding: '0.5rem 1rem',
-				borderRadius: '0.375rem',
+				padding: '0.5rem 0',
 			};
 		}
 	};
@@ -29,22 +27,22 @@ export const Layout = ({ children }) => {
 					<h4 className="uppercase font-bold text-xl text-[#B35C00] z-10 bg-[#fcfcfc] bg-opacity-90">
 						Tour Buddy
 					</h4>
-					<img
+					{/* <img
 						src={logo}
 						alt="Logo"
 						className="w-10 h-10 absolute z-0 -top-4 left-1/2 transform -translate-x-1/2"
-					/>
+					/> */}
 				</Link>
 
-				<div className="flex items-center text-sm font-semibold gb-transition">
+				<div className="flex items-center text-sm font-semibold gb-transition space-x-9">
 					<NavLink to={'/'} style={navLinkStyle}>
 						Home
 					</NavLink>
 					<NavLink to={'/tours'} style={navLinkStyle}>
 						Tours
 					</NavLink>
-					<NavLink to={'/contacts'} style={navLinkStyle}>
-						Contacts
+					<NavLink to={'/booked-tours'} style={navLinkStyle}>
+						Booked Tours
 					</NavLink>
 					<NavLink to={'/about'} style={navLinkStyle}>
 						About
