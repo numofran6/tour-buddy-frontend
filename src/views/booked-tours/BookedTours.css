@@ -1,4 +1,9 @@
 .booked-tour-preview {
-	@apply bg-[#081922] text-[#fcfcfc] p-7 min-h-[22rem] 
-  space-y-3 flex flex-col justify-center rounded-md;
+	@apply bg-[#081922] text-[#fcfcfc]  min-h-[22rem] 
+  rounded-md;
+}
+
+.booked-tour-preview-content {
+	@apply bg-black bg-opacity-70 p-7 space-y-3 
+  flex flex-col justify-center rounded-md;
 }

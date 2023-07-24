@@ -14,7 +14,7 @@ export const BookedTours = () => {
 
 	return (
 		<>
-			{tours ? (
+			{tours.length > 0 ? (
 				<Layout>
 					<main className="max-w-container min-h-[70vh] py-8 mb-20">
 						<div className="mb-16 space-y-1">

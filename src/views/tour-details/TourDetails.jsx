@@ -81,10 +81,9 @@ export const TourDetails = () => {
 		e.preventDefault();
 
 		if (validateForm()) {
-			const { images, ...otherTourOptions } = tour;
 			dispatch({
 				type: 'ADD_TOUR',
-				payload: { email, bookingDate, tourBuddy, ...otherTourOptions },
+				payload: { email, bookingDate, tourBuddy, ...tour },
 			});
 			navigate('/booked-tours');
 		}
@@ -136,16 +135,47 @@ export const TourDetails = () => {
 						</div>
 
 						<div className="grid grid-cols-3 gap-3">
-							{Array.from({ length: 6 }).map((_, i) => (
+							{tour?.images?.map((image, i) => (
 								<div key={i}>
 									<img
-										src=""
-										alt="Tour Image"
-										className="w-full h-[14rem] img-bg"
+										src={image}
+										alt={`Tour Image ${i}`}
+										className="w-full h-[14rem] img-bg object-cover rounded-md"
 									/>
 								</div>
 							))}
 						</div>
+
+						{/* 
+						import Gallery from "react-photo-gallery";
+import Carousel, { Modal, ModalGateway } from "react-images";
+
+						const [currentImage, setCurrentImage] = useState(0);
+  const [viewerIsOpen, setViewerIsOpen] = useState(false);
+
+  const openLightbox = useCallback((event, { photo, index }) => {
+    setCurrentImage(index);
+    setViewerIsOpen(true);
+  }, []);
+
+  const closeLightbox = () => {
+    setCurrentImage(0);
+    setViewerIsOpen(false);
+  }; */}
+						{/* <ModalGateway>
+          {viewerIsOpen ? (
+            <Modal onClose={closeLightbox}>
+              <Carousel
+                currentIndex={currentImage}
+                views={photos.map((x) => ({
+                  ...x,
+                  srcset: x.srcSet,
+                  caption: x.title,
+                }))}
+              />
+            </Modal>
+          ) : null}
+        </ModalGateway> */}
 					</main>
 
 					{openModal && (
@@ -199,9 +229,13 @@ export const TourDetails = () => {
 											formError.tourBuddy.message
 										}
 									>
-										{tourBuddies.map((tourBuddy) => (
+										{tourBuddies?.map((tourBuddy) => (
 											<MenuItem value={tourBuddy.name} key={tourBuddy.name}>
-												<img src="" alt="" className="img-bg w-10 h-10 mr-2" />{' '}
+												<img
+													src={tourBuddy.image}
+													alt=""
+													className="img-bg w-10 h-10 mr-2 object-cover"
+												/>{' '}
 												<span>{tourBuddy.name}</span>
 											</MenuItem>
 										))}

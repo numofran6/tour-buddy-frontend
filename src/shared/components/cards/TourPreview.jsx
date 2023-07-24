@@ -7,7 +7,13 @@ export const TourPreview = ({ item }) => {
 
 	return (
 		<div className="h-[15rem] bg-white w-full rounded-md sidebar-border grid grid-cols-3 overflow-hidden">
-			<div className="col-span-1 h-full w-full img-bg"></div>
+			<img
+				src={item?.images[0]}
+				className="col-span-1 h-full w-full img-bg object-cover cursor-pointer"
+				onClick={() =>
+					navigate(`/tour/${item.title}`, { state: { tour: item } })
+				}
+			/>
 			<div className="p-5 col-span-2 flex flex-col justify-between space-y-3 ">
 				<div className="space-y-1">
 					<h1 className="text-3xl font-heading font-semibold">{item.title}</h1>
@@ -30,14 +36,13 @@ export const TourPreview = ({ item }) => {
 				<div className="flex items-center justify-between">
 					<h6 className="text-xl font-semibold">${item.price}</h6>
 
-					<Button
+					<a
 						onClick={() =>
 							navigate(`/tour/${item.title}`, { state: { tour: item } })
 						}
-						className="text-blue-600 uppercase"
 					>
-						View More
-					</Button>
+						<Button className="text-blue-600 uppercase">View More</Button>
+					</a>
 				</div>
 			</div>
 		</div>

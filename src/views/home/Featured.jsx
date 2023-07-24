@@ -64,7 +64,7 @@ export const Featured = () => {
 								<div key={index} className="flex-shrink-0 h-[30rem]">
 									<div className="relative">
 										<img
-											src=""
+											src={item.images[0]}
 											alt=""
 											className="w-[45rem] img-bg h-[25rem] object-cover"
 											loading="lazy"
