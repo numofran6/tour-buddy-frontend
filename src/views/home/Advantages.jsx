@@ -1,4 +1,4 @@
-import { SectionHeading, UnderlineBtn } from '../../shared/components';
+import { SectionHeading } from '../../shared/components';
 import { advantages } from '../../shared/utils/data';
 
 export const Advantages = () => {
@@ -16,14 +16,14 @@ export const Advantages = () => {
 					showPaginationBtns={false}
 				/>
 
-				<div className="grid grid-cols-3 gap-10">
+				<div className="padding-x advantages-container">
 					{advantages.map((item, index) => (
 						<div
 							key={index}
 							className="space-y-3 bg-gray-300 h-[10rem] bg-cover relative"
 							style={{ backgroundImage: `url(${item.img})` }}
 						>
-							<div className="absolute inset-0 bg-black bg-opacity-50 text-[#fcfcfc] flex flex-col justify-between p-5">
+							<div className="advantage">
 								<div>{item.icon}</div>
 
 								<h1 className="text-lg">{item.title}</h1>

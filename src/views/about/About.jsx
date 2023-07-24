@@ -9,15 +9,15 @@ import { BsGlobeEuropeAfrica } from 'react-icons/bs';
 export const About = () => {
 	return (
 		<Layout>
-			<main className="max-w-container py-8 mb-20 grid grid-cols-5 gap-20">
-				<div className="col-span-2">
+			<main className="max-w-container py-8 mb-20 grid grid-cols-7 gap-20">
+				<div className="col-span-3">
 					<img
 						src="https://images.unsplash.com/photo-1504150558240-0b4fd8946624?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8dHJhdmVsfGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60"
 						className="w-full h-full object-cover img-bg"
 					/>
 				</div>
 
-				<div className="text-sm space-y-10 col-span-3">
+				<div className="text-sm space-y-10 col-span-4">
 					<div className="flex items-center space-x-3">
 						<div className="border-b-2 w-10 border-[#081922]" />
 						<h1 className="uppercase">About Us</h1>

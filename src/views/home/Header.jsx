@@ -3,8 +3,8 @@ import { Search } from './Search';
 export const Header = () => {
 	return (
 		<header className="home-bg-color">
-			<div className="max-w-container flex flex-col justify-end space-y-7 pt-14 pb-10">
-				<h1 className="text-7xl uppercase font-medium font-heading">
+			<div className="max-w-container padding-x header-container">
+				<h1 className="text-5xl lg:text-7xl uppercase font-medium font-heading">
 					Discover the real <span className="">Ghana</span>
 				</h1>
 				<p className="max-w-3xl text-sm">

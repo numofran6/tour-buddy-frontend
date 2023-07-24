@@ -6,7 +6,6 @@ body {
 	font-family: 'Poppins', sans-serif, 'Baskerville';
 	color: #081922;
 	background-color: #fcfcfc;
-	@apply px-7 lg:px-0;
 }
 
 .gb-transition {
@@ -28,4 +27,8 @@ body {
 .no-page-container {
 	@apply h-[70vh] bg-white flex flex-col 
 	items-center justify-center space-y-5;
+}
+
+.padding-x {
+	@apply px-7 xl:px-0;
 }

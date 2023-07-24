@@ -11,7 +11,7 @@ export const ProgressUI = ({
 			<div
 				className={`${showBorderBottom && 'border-b border-[#295B5F] pb-7'}`}
 			>
-				<h1 className="space-x-10 font-heading text-3xl  uppercase">
+				<h1 className="md:space-x-10 font-heading text-3xl uppercase flex flex-col md:flex-row">
 					<span>{titleNumber}</span> <span>{title}</span>{' '}
 				</h1>
 				<p className="pt-7 text-sm text-[#295B5F]">{description}</p>

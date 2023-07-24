@@ -1,3 +1,30 @@
 .footer-link {
 	@apply hover:text-[#B35C00];
 }
+
+.nav-container {
+	@apply flex items-center justify-between 
+	 py-7 lg:py-5;
+}
+
+.nav-title {
+	@apply uppercase font-bold text-xl text-[#B35C00] z-10;
+}
+
+.nav-menu-desktop {
+	@apply hidden lg:flex items-center text-sm font-semibold space-x-9;
+}
+
+.menu-modal {
+	@apply fixed inset-0 bg-black bg-opacity-90 z-50 text-[#fcfcfc] p-10;
+}
+
+.menu-modal-links {
+	@apply lg:hidden flex flex-col items-center justify-center 
+	h-[90%] text-2xl font-semibold space-y-10;
+}
+
+.footer-container {
+	@apply lg:text-sm py-16 flex flex-col space-y-12 
+	lg:space-y-0 lg:flex-row lg:justify-between;
+}

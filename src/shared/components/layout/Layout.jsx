@@ -1,11 +1,14 @@
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../../assets/logo.png';
 import { BiPhone, BiLogoPaypal, BiLogoMastercard } from 'react-icons/bi';
-import { CiMail } from 'react-icons/ci';
+import { CiMail, CiMenuBurger } from 'react-icons/ci';
 import { RiVisaFill } from 'react-icons/ri';
+import { useState } from 'react';
+import { TfiClose } from 'react-icons/tfi';
 import './Layout.css';
 
 export const Layout = ({ children }) => {
+	const [openMenu, setOpenMenu] = useState(false);
 	const navLinkStyle = ({ isActive }) => {
 		if (isActive) {
 			return {
@@ -22,15 +25,12 @@ export const Layout = ({ children }) => {
 
 	return (
 		<>
-			<nav className="flex items-center justify-between max-w-container py-5">
-				<Link
-					to={'/'}
-					className="uppercase font-bold text-xl text-[#B35C00] z-10"
-				>
+			<nav className="nav-container padding-x max-w-container">
+				<Link to={'/'} className="nav-title">
 					Tour Buddy
 				</Link>
 
-				<div className="flex items-center text-sm font-semibold gb-transition space-x-9">
+				<div className="nav-menu-desktop gb-transition">
 					<NavLink to={'/'} style={navLinkStyle}>
 						Home
 					</NavLink>
@@ -44,11 +44,50 @@ export const Layout = ({ children }) => {
 						About
 					</NavLink>
 				</div>
+
+				<div className="lg:hidden">
+					<button onClick={() => setOpenMenu(true)}>
+						<CiMenuBurger className="w-8 h-8" />
+					</button>
+				</div>
+
+				{openMenu && (
+					<div className="menu-modal">
+						<div className="flex justify-end">
+							<button onClick={() => setOpenMenu(false)}>
+								<TfiClose className="w-10 h-10" />
+							</button>
+						</div>
+
+						<div className="menu-modal-links gb-transition">
+							<div>
+								<NavLink to={'/'} style={navLinkStyle}>
+									Home
+								</NavLink>
+							</div>
+							<div>
+								<NavLink to={'/tours'} style={navLinkStyle}>
+									Tours
+								</NavLink>
+							</div>
+							<div>
+								<NavLink to={'/booked-tours'} style={navLinkStyle}>
+									Booked Tours
+								</NavLink>
+							</div>
+							<div>
+								<NavLink to={'/about'} style={navLinkStyle}>
+									About
+								</NavLink>
+							</div>
+						</div>
+					</div>
+				)}
 			</nav>
 
 			{children}
 
-			<footer className="text-sm max-w-container py-16 flex justify-between">
+			<footer className="max-w-container padding-x footer-container">
 				<div className="space-y-5 text-xs">
 					<Link to={'/'} className="flex items-center space-x-3">
 						<img src={logo} alt="Logo" className="w-10 h-10" />

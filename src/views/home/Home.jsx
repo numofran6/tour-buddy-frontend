@@ -21,11 +21,11 @@ export const Home = () => {
 					<HowItWorks />
 				</section>
 
-				<section className="pt-40 pb-10" id="popular">
+				<section className="py-20" id="popular">
 					<Featured />
 				</section>
 
-				<section className="py-20" id="advantages">
+				<section className="pt-10 pb-20" id="advantages">
 					<Advantages />
 				</section>
 

@@ -33,16 +33,16 @@ export const Featured = () => {
 				/>
 
 				<div
-					className="flex space-x-80 overflow-x-scroll hide-scrollbar px-72"
+					className="flex space-x-20 lg:space-x-80 overflow-auto hide-scrollbar padding-x lg:px-72"
 					ref={scrollFeaturedRef}
 				>
 					{isLoading || isError
 						? Array.from({ length: 4 }).map((_, index) => (
-								<div key={index} className="flex-shrink-0 h-[30rem]">
+								<div key={index} className="flex-shrink-0 min-h-[30rem]">
 									<div className="relative">
-										<CustomSkeleton width={720} height={400} />
+										<CustomSkeleton width={400} height={350} />
 
-										<div className="absolute -left-56 -bottom-10 w-[20rem] h-[15rem]">
+										<div className="featured-container-info w-[25rem]">
 											<CustomSkeleton
 												width="100%"
 												height="100%"
@@ -61,16 +61,16 @@ export const Featured = () => {
 								</div>
 						  ))
 						: featuredDestinations.map((item, index) => (
-								<div key={index} className="flex-shrink-0 h-[30rem]">
+								<div key={index} className="flex-shrink-0 min-h-[30rem]">
 									<div className="relative">
 										<img
 											src={item.images[0]}
 											alt=""
-											className="w-[45rem] img-bg h-[25rem] object-cover"
+											className="w-[25rem] h-[20rem] lg:w-[45rem] lg:h-[25rem] img-bg object-cover"
 											loading="lazy"
 										/>
 
-										<div className="featured-container-info">
+										<div className="featured-container-info w-[25rem]">
 											<div className="flex items-center justify-between">
 												<h1 className="text-xl flex items-center">
 													<PiMapPinLineThin className="mr-1" /> {item.title}
@@ -93,28 +93,28 @@ export const Featured = () => {
 
 											<p className="text-xs">{item.desc.slice(0, 220)}...</p>
 
-											<div className="flex justify-start text-sm ">
+											<div className="flex justify-between lg:justify-start text-sm">
 												<h6>
 													Price:{' '}
 													<span className="font-semibold">${item.price}</span>
 												</h6>
-											</div>
 
-											<div className="absolute -bottom-8 -right-16">
-												<IconButton
-													style={{
-														color: '#fcfcfc',
-														backgroundColor: '#295B5F',
-													}}
-													onClick={() =>
-														navigate(`/tour/${item.title}`, {
-															state: { tour: item },
-														})
-													}
-													className="featured-container-btn"
-												>
-													<p className="text-sm">Book Now</p>
-												</IconButton>
+												<div className="lg:absolute lg:-bottom-8 lg:-right-16">
+													<IconButton
+														style={{
+															color: '#fcfcfc',
+															backgroundColor: '#295B5F',
+														}}
+														onClick={() =>
+															navigate(`/tour/${item.title}`, {
+																state: { tour: item },
+															})
+														}
+														className="featured-container-btn"
+													>
+														<p className="text-sm">Book Now</p>
+													</IconButton>
+												</div>
 											</div>
 										</div>
 									</div>

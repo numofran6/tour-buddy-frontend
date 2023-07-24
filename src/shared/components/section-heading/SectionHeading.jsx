@@ -14,7 +14,7 @@ export const SectionHeading = ({
 	maxScroll = 0,
 }) => {
 	return (
-		<div className="flex flex-col space-y-5 max-w-container">
+		<div className="flex flex-col space-y-5 padding-x max-w-container">
 			<div className="flex items-center space-x-3">
 				<div
 					className={`border-b-2 w-10 ${
@@ -28,11 +28,11 @@ export const SectionHeading = ({
 				{subHeading}
 			</h3>
 
-			<div className="flex items-center justify-between">
+			<div className="flex flex-col md:flex-row md:items-center md:justify-between">
 				<p className="ml-10 text-sm max-w-lg">{description}</p>
 
 				{showPaginationBtns && (
-					<div className="flex items-center space-x-3">
+					<div className="flex items-center justify-end md:justify-start space-x-3">
 						<IconButton
 							onClick={handlePreviousClick}
 							disabled={scrollLeft === 0}

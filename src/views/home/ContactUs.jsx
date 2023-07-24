@@ -23,8 +23,8 @@ export const ContactUs = () => {
 
 	return (
 		<>
-			<div className="flex bg-[#081922] text-[#fcfcfc]">
-				<div className="space-y-10 py-10 ml-[7.7rem] w-1/2 h-[100vh]">
+			<div className="flex flex-col md:flex-row bg-[#081922] text-[#fcfcfc]">
+				<div className="contact-container padding-x">
 					<div className="space-y-5">
 						<div className="flex items-center space-x-3">
 							<div className="border-b-2 w-10 border-[#fcfcfc]" />
@@ -42,7 +42,7 @@ export const ContactUs = () => {
 						</p>
 					</div>
 
-					<div className="flex space-x-20 text-sm">
+					<div className="contact-info">
 						<div className="space-y-5">
 							<h6 className="flex items-center">
 								<CiMapPin className="w-7 h-7 mr-2" /> NirvanaStreet 123,
@@ -68,7 +68,10 @@ export const ContactUs = () => {
 						</div>
 					</div>
 
-					<form onSubmit={handleSubmit} className="flex flex-col space-y-8">
+					<form
+						onSubmit={handleSubmit}
+						className="flex flex-col items-center md:items-start space-y-8"
+					>
 						<input
 							type="text"
 							placeholder="Your Name"
@@ -103,7 +106,7 @@ export const ContactUs = () => {
 					</form>
 				</div>
 
-				<div className="bg-[#295B5F] w-1/2 h-[100vh]">
+				<div className="bg-[#295B5F] md:w-1/2 h-[40%] md:h-[130vh] lg:h-[100vh]">
 					<img
 						src={contactusimg}
 						alt="Contact Us Cover"

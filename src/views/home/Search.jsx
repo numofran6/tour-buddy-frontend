@@ -83,7 +83,7 @@ export const Search = () => {
 			className="bg-cover"
 		>
 			<div className="search-container">
-				<form onSubmit={handleSubmit} className="flex items-center space-x-12">
+				<form onSubmit={handleSubmit} className="header-search-form">
 					<Stack width="200px">
 						<Autocomplete
 							options={regionsOptions.map((region) => region.value)}
