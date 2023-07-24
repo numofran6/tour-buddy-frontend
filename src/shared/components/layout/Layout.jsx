@@ -74,31 +74,31 @@ export const Layout = ({ children }) => {
 					<Link to={'/tours'} className="footer-link gb-transition">
 						Tours
 					</Link>
-					<Link to={'/regions'} className="footer-link gb-transition">
-						Regions
+					<Link to={'/booked-tours'} className="footer-link gb-transition">
+						Booked Tours
 					</Link>
-					<Link to={'/popular'} className="footer-link gb-transition">
+					<Link to={'/#popular'} className="footer-link gb-transition">
 						Popular places
 					</Link>
 				</div>
 
 				<div className="space-y-5 flex flex-col">
-					<Link to={'/tours'} className="footer-link gb-transition">
-						About Ghana
+					<Link to={'/#regions'} className="footer-link gb-transition">
+						Regions
 					</Link>
-					<Link to={'/regions'} className="footer-link gb-transition">
-						Reviews
-					</Link>
-					<Link to={'/popular'} className="footer-link gb-transition">
+					<Link to={'/#advantages'} className="footer-link gb-transition">
 						Advantages
+					</Link>
+					<Link to={'/about'} className="footer-link gb-transition">
+						About Us
 					</Link>
 				</div>
 
 				<div className="space-y-5 flex flex-col">
-					<Link to={'/contacts'} className="footer-link gb-transition">
+					<Link to={'/#contact-us'} className="footer-link gb-transition">
 						Contacts
 					</Link>
-					<Link to={'/faqs'} className="footer-link gb-transition">
+					<Link to={'/#faqs'} className="footer-link gb-transition">
 						FAQ
 					</Link>
 				</div>

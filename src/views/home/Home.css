@@ -4,7 +4,7 @@
 }
 
 .search-container {
-	@apply py-20 min-h-[60vh] bg-[#295B5F] text-[#fcfcfc] 
+	@apply py-20 min-h-[60vh] bg-[#295B5F] bg-opacity-80 text-[#fcfcfc] 
 	flex flex-col items-center justify-center space-y-8;
 }
 

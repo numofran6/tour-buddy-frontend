@@ -75,104 +75,112 @@ export const Search = () => {
 	};
 
 	return (
-		<div className="search-container">
-			<form onSubmit={handleSubmit} className="flex items-center space-x-12">
-				<Stack width="200px">
-					<Autocomplete
-						options={regionsOptions.map((region) => region.value)}
-						renderInput={(params) => (
-							<TextField
-								{...params}
-								variant="standard"
-								label={
-									<div className="search-input-label">
-										<SlLocationPin className="search-input-icon" />{' '}
-										<span>Select Region</span>
-									</div>
-								}
-								style={{
-									borderBottom: '1px solid white',
-								}}
-								error={formError.region && !region}
-							/>
+		<div
+			style={{
+				backgroundImage:
+					'url(https://images.unsplash.com/photo-1522678073884-26b1b87526e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1535&q=80)',
+			}}
+			className="bg-cover"
+		>
+			<div className="search-container">
+				<form onSubmit={handleSubmit} className="flex items-center space-x-12">
+					<Stack width="200px">
+						<Autocomplete
+							options={regionsOptions.map((region) => region.value)}
+							renderInput={(params) => (
+								<TextField
+									{...params}
+									variant="standard"
+									label={
+										<div className="search-input-label">
+											<SlLocationPin className="search-input-icon" />{' '}
+											<span>Select Region</span>
+										</div>
+									}
+									style={{
+										borderBottom: '1px solid white',
+									}}
+									error={formError.region && !region}
+								/>
+							)}
+							value={region}
+							onChange={(e, newValue) => setRegion(newValue)}
+						/>
+
+						{formError.region && !region && (
+							<p className="text-red-400 text-xs">Required *</p>
 						)}
-						value={region}
-						onChange={(e, newValue) => setRegion(newValue)}
-					/>
+					</Stack>
 
-					{formError.region && !region && (
-						<p className="text-red-400 text-xs">Required *</p>
-					)}
-				</Stack>
+					<Stack width="200px">
+						<Autocomplete
+							options={activitiesOptions.map((region) => region.label)}
+							renderInput={(params) => (
+								<TextField
+									{...params}
+									variant="standard"
+									label={
+										<div className="search-input-label">
+											<GoTelescope className="search-input-icon" />{' '}
+											<span>Select Activity</span>
+										</div>
+									}
+									style={{
+										borderBottom: '1px solid white',
+									}}
+									error={formError.activity && !activity}
+								/>
+							)}
+							value={activity}
+							onChange={(e, newValue) => setActivity(newValue)}
+						/>
 
-				<Stack width="200px">
-					<Autocomplete
-						options={activitiesOptions.map((region) => region.label)}
-						renderInput={(params) => (
-							<TextField
-								{...params}
-								variant="standard"
-								label={
-									<div className="search-input-label">
-										<GoTelescope className="search-input-icon" />{' '}
-										<span>Select Activity</span>
-									</div>
-								}
-								style={{
-									borderBottom: '1px solid white',
-								}}
-								error={formError.activity && !activity}
-							/>
+						{formError.activity && !activity && (
+							<p className="text-red-400 text-xs">Required *</p>
 						)}
-						value={activity}
-						onChange={(e, newValue) => setActivity(newValue)}
-					/>
+					</Stack>
 
-					{formError.activity && !activity && (
-						<p className="text-red-400 text-xs">Required *</p>
-					)}
-				</Stack>
+					<Stack width="200px">
+						<Autocomplete
+							options={numberOfTourists}
+							renderInput={(params) => (
+								<TextField
+									{...params}
+									variant="standard"
+									label={
+										<div className="search-input-label">
+											<RxPerson className="search-input-icon" />{' '}
+											<span>Number of People</span>
+										</div>
+									}
+									style={{
+										borderBottom: '1px solid white',
+									}}
+									error={formError.maxTourists && !maxTourists}
+								/>
+							)}
+							value={maxTourists}
+							onChange={(e, newValue) => setMaxTourists(newValue)}
+						/>
 
-				<Stack width="200px">
-					<Autocomplete
-						options={numberOfTourists}
-						renderInput={(params) => (
-							<TextField
-								{...params}
-								variant="standard"
-								label={
-									<div className="search-input-label">
-										<RxPerson className="search-input-icon" />{' '}
-										<span>Number of People</span>
-									</div>
-								}
-								style={{
-									borderBottom: '1px solid white',
-								}}
-								error={formError.maxTourists && !maxTourists}
-							/>
+						{formError.maxTourists && !maxTourists && (
+							<p className="text-red-400 text-xs">Required *</p>
 						)}
-						value={maxTourists}
-						onChange={(e, newValue) => setMaxTourists(newValue)}
-					/>
+					</Stack>
 
-					{formError.maxTourists && !maxTourists && (
-						<p className="text-red-400 text-xs">Required *</p>
-					)}
-				</Stack>
-
-				<IconButton
-					type="submit"
-					style={{ color: '#fcfcfc', backgroundColor: '#081921' }}
-					className="w-24 h-24 rounded-full flex flex-col justify-center"
-				>
-					{isLoading ? (
-						<CircularProgress sx={{ color: '#f4eaf4' }} size={24} />
-					) : (
-						<p className="text-xs uppercase text-center">Search Tour</p>
-					)}
-				</IconButton>
-			</form>
+					<IconButton
+						type="submit"
+						style={{ color: '#fcfcfc', backgroundColor: '#081921' }}
+						className="w-24 h-24 rounded-full flex flex-col justify-center"
+					>
+						{isLoading ? (
+							<CircularProgress sx={{ color: '#f4eaf4' }} size={24} />
+						) : (
+							<p className="text-xs uppercase text-center">Search Tour</p>
+						)}
+					</IconButton>
+				</form>
+			</div>
 		</div>
 	);
 };

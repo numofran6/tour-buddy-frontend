@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Layout } from '../../shared/components';
-import { IconButton, MenuItem, TextField } from '@mui/material';
+import { IconButton, MenuItem, Rating, TextField } from '@mui/material';
 import { FaMapPin } from 'react-icons/fa';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { BsEmojiFrownFill } from 'react-icons/bs';
@@ -135,12 +135,25 @@ export const TourDetails = () => {
 			{tour ? (
 				<Layout>
 					<main className="max-w-container space-y-5 py-8 mb-20">
-						<div>
+						<div className="space-y-1">
 							<h1 className="font-heading text-5xl">{tour?.title}</h1>
 							<h4 className="flex items-center space-x-1 text-xl">
 								<FaMapPin className="text-[#B35C00] w-5 h-5" />{' '}
 								<span>{tour?.region}</span>
 							</h4>
+							<div className="flex items-center">
+								<span className="font-semibold">Rating:</span>
+								<Rating
+									value={tour.rating}
+									precision={0.5}
+									size="small"
+									readOnly
+									className="ml-2"
+								/>
+							</div>
+							<h6>
+								<span className="font-semibold">Price:</span> ${tour.price}
+							</h6>
 						</div>
 
 						<div className="flex items-center justify-between">
@@ -294,7 +307,7 @@ export const TourDetails = () => {
 				<Layout>
 					<div className="no-page-container">
 						<BsEmojiFrownFill className="w-20 h-20" />
-						<h1 className="text-4xl font-heading">404 TOUR NOT FOUND</h1>
+						<h1 className="text-4xl font-heading">404 | Tour Not Found</h1>
 					</div>
 				</Layout>
 			)}

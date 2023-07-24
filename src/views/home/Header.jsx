@@ -17,9 +17,6 @@ export const Header = () => {
 				</p>
 			</div>
 
-			{/* <div className="h-[60vh]">
-				<img src="" alt="" className="h-full w-full img-bg object-cover" />
-			</div> */}
 			<section>
 				<Search />
 			</section>

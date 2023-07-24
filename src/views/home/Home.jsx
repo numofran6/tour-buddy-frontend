@@ -13,23 +13,23 @@ export const Home = () => {
 			<Header />
 
 			<main>
-				<section className="py-20">
+				<section className="py-20" id="regions">
 					<Regions />
 				</section>
 
-				<section>
+				<section id="faqs">
 					<HowItWorks />
 				</section>
 
-				<section className="pt-40 pb-10">
+				<section className="pt-40 pb-10" id="popular">
 					<Featured />
 				</section>
 
-				<section className="py-20">
+				<section className="py-20" id="advantages">
 					<Advantages />
 				</section>
 
-				<section>
+				<section id="contact-us">
 					<ContactUs />
 				</section>
 			</main>
