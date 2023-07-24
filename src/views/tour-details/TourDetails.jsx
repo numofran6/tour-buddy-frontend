@@ -1,19 +1,21 @@
-import { FaMapPin } from 'react-icons/fa';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Layout } from '../../shared/components';
 import { IconButton, MenuItem, TextField } from '@mui/material';
+import { FaMapPin } from 'react-icons/fa';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useEffect, useRef, useState } from 'react';
 import { BsEmojiFrownFill } from 'react-icons/bs';
 import { LiaHikingSolid } from 'react-icons/lia';
 import { TfiClose } from 'react-icons/tfi';
-import 'react-date-range/dist/styles.css';
-import 'react-date-range/dist/theme/default.css';
 import { SlCalender } from 'react-icons/sl';
 import { DateRange } from 'react-date-range';
 import { AiOutlineMail } from 'react-icons/ai';
 import { format } from 'date-fns';
 import { useFetch } from '../../shared/custom-hooks';
 import { useBookedToursContext } from '../../shared/context/bookedToursContext';
+import Gallery from 'react-photo-gallery';
+import Carousel, { Modal, ModalGateway } from 'react-images';
+import 'react-date-range/dist/styles.css';
+import 'react-date-range/dist/theme/default.css';
 import './TourDetails.css';
 
 export const TourDetails = () => {
@@ -30,6 +32,25 @@ export const TourDetails = () => {
 		isError,
 		data: tourBuddies,
 	} = useFetch('get-tourbuddies', `/tourbuddy?region=${tour?.region}`);
+
+	const [currentImage, setCurrentImage] = useState(0);
+	const [viewerIsOpen, setViewerIsOpen] = useState(false);
+
+	const openLightbox = useCallback((event, { photo, index }) => {
+		setCurrentImage(index);
+		setViewerIsOpen(true);
+	}, []);
+
+	const closeLightbox = () => {
+		setCurrentImage(0);
+		setViewerIsOpen(false);
+	};
+
+	const imagesWithDimensions = tour?.images?.map((image) => ({
+		src: image,
+		width: 4,
+		height: 3,
+	}));
 
 	// BOOKING FORM
 	const [email, setEmail] = useState('');
@@ -113,7 +134,7 @@ export const TourDetails = () => {
 		<>
 			{tour ? (
 				<Layout>
-					<main className="max-w-container space-y-5 py-3 mb-20">
+					<main className="max-w-container space-y-5 py-8 mb-20">
 						<div>
 							<h1 className="font-heading text-5xl">{tour?.title}</h1>
 							<h4 className="flex items-center space-x-1 text-xl">
@@ -134,48 +155,18 @@ export const TourDetails = () => {
 							</IconButton>
 						</div>
 
-						<div className="grid grid-cols-3 gap-3">
-							{tour?.images?.map((image, i) => (
-								<div key={i}>
-									<img
-										src={image}
-										alt={`Tour Image ${i}`}
-										className="w-full h-[14rem] img-bg object-cover rounded-md"
+						<Gallery photos={imagesWithDimensions} onClick={openLightbox} />
+
+						<ModalGateway>
+							{viewerIsOpen ? (
+								<Modal onClose={closeLightbox}>
+									<Carousel
+										currentIndex={currentImage}
+										views={imagesWithDimensions}
 									/>
-								</div>
-							))}
-						</div>
-
-						{/* 
-						import Gallery from "react-photo-gallery";
-import Carousel, { Modal, ModalGateway } from "react-images";
-
-						const [currentImage, setCurrentImage] = useState(0);
-  const [viewerIsOpen, setViewerIsOpen] = useState(false);
-
-  const openLightbox = useCallback((event, { photo, index }) => {
-    setCurrentImage(index);
-    setViewerIsOpen(true);
-  }, []);
-
-  const closeLightbox = () => {
-    setCurrentImage(0);
-    setViewerIsOpen(false);
-  }; */}
-						{/* <ModalGateway>
-          {viewerIsOpen ? (
-            <Modal onClose={closeLightbox}>
-              <Carousel
-                currentIndex={currentImage}
-                views={photos.map((x) => ({
-                  ...x,
-                  srcset: x.srcSet,
-                  caption: x.title,
-                }))}
-              />
-            </Modal>
-          ) : null}
-        </ModalGateway> */}
+								</Modal>
+							) : null}
+						</ModalGateway>
 					</main>
 
 					{openModal && (
