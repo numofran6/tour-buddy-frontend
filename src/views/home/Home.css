@@ -64,3 +64,8 @@
 	@apply absolute -bottom-8 -right-16 
 	w-28 h-28 rounded-full overflow-hidden;
 }
+
+.ghana-text {
+	@apply bg-gradient-to-r from-red-600 via-yellow-200 to-green-600 
+	inline-block text-transparent bg-clip-text;
+}

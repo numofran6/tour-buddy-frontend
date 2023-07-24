@@ -1,1 +1,1 @@
-export const apiPath = 'http://localhost:8800/api'
+export const apiPath = 'https://tourbuddy-backend.onrender.com/api'
