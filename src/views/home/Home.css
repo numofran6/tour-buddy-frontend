@@ -99,9 +99,10 @@
 }
 
 .css-1h51icj-MuiAutocomplete-root .MuiInput-root .MuiInput-input {
-	@apply text-white capitalize;
+	color: white;
+	text-transform: capitalize;
 }
 
 .MuiPopper-root {
-	@apply capitalize;
+	text-transform: capitalize;
 }
