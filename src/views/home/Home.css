@@ -64,7 +64,7 @@
 }
 
 .regions-content {
-	@apply w-[40rem] space-y-3 flex-shrink-0;
+	@apply w-[20rem] lg:w-[40rem] space-y-3 flex-shrink-0;
 }
 
 .featured-container-info {

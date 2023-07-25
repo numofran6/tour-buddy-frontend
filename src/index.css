@@ -26,7 +26,7 @@ body {
 
 .no-page-container {
 	@apply h-[70vh] bg-white flex flex-col 
-	items-center justify-center space-y-5;
+	items-center justify-center text-center space-y-5;
 }
 
 .padding-x {
