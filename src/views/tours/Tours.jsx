@@ -1,5 +1,5 @@
 import { AiOutlineDollar, AiOutlineLock } from 'react-icons/ai';
-import { Layout, Map } from '../../shared/components';
+import { Layout, MapComponent } from '../../shared/components';
 import { SearchTourForm } from './SearchTourForm';
 import { BsEmojiHeartEyes, BsPatchCheck } from 'react-icons/bs';
 import { Box, MenuItem, TextField } from '@mui/material';
@@ -65,7 +65,7 @@ export const Tours = () => {
 					<div className="max-w-container lg:grid lg:grid-cols-3 lg:gap-14 px-2">
 						<div className="col-span-1 py-5 space-y-4">
 							<div className="w-full h-[12rem] img-bg sidebar-border overflow-hidden">
-								<Map />
+								<MapComponent />
 							</div>
 
 							<SearchTourForm />
