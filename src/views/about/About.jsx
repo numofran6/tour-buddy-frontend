@@ -1,19 +1,19 @@
 import React from 'react';
 import { Layout } from '../../shared/components';
-import { ghanamap } from '../../assets/images';
 import { LuCake } from 'react-icons/lu';
 import { AchievementTag } from './AchievementTag';
 import { BiImages } from 'react-icons/bi';
 import { BsGlobeEuropeAfrica } from 'react-icons/bs';
+import './About.css';
 
 export const About = () => {
 	return (
 		<Layout>
-			<main className="max-w-container py-8 mb-20 grid grid-cols-7 gap-20">
+			<main className="max-w-container padding-x py-8 mb-20 space-y-5 lg:space-y-0 lg:grid lg:grid-cols-7 lg:gap-20">
 				<div className="col-span-3">
 					<img
 						src="https://images.unsplash.com/photo-1504150558240-0b4fd8946624?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8dHJhdmVsfGVufDB8fDB8fHww&auto=format&fit=crop&w=600&q=60"
-						className="w-full h-full object-cover img-bg"
+						className="w-full h-[40vh] lg:h-full object-cover img-bg"
 					/>
 				</div>
 
@@ -28,21 +28,21 @@ export const About = () => {
 						organized adventures at TourBuddy.
 					</h4>
 
-					<div className="flex items-center justify-between">
+					<div className="flex items-center justify-between md:max-w-md md:mx-auto lg:max-w-none">
 						<AchievementTag
-							icon={<LuCake className="w-28 h-28" />}
+							icon={<LuCake className="achievement-icon" />}
 							highlight={'2010'}
 							desc={'funded'}
 						/>
 
 						<AchievementTag
-							icon={<BiImages className="w-28 h-28" />}
+							icon={<BiImages className="achievement-icon" />}
 							highlight={'50,000+'}
 							desc={'adventures'}
 						/>
 
 						<AchievementTag
-							icon={<BsGlobeEuropeAfrica className="w-28 h-28" />}
+							icon={<BsGlobeEuropeAfrica className="achievement-icon" />}
 							highlight={'1,200+'}
 							desc={'guides'}
 						/>

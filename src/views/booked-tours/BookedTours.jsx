@@ -16,9 +16,9 @@ export const BookedTours = () => {
 		<>
 			{tours.length > 0 ? (
 				<Layout>
-					<main className="max-w-container min-h-[70vh] py-8 mb-20">
+					<main className="max-w-container min-h-[70vh] py-8 mb-20 padding-x">
 						<div className="mb-16 space-y-1">
-							<h1 className="text-6xl font-semibold font-heading">
+							<h1 className="text-4xl lg:text-6xl font-semibold font-heading">
 								Manage Booked Tours
 							</h1>
 							<h6>
@@ -27,7 +27,7 @@ export const BookedTours = () => {
 							</h6>
 						</div>
 
-						<div className="grid grid-cols-2 gap-20">
+						<div className="grid lg:grid-cols-2 gap-5 lg:gap-20">
 							{tours?.map((tour) => (
 								<div key={tour.title}>
 									<BookedTourPreview item={tour} dispatch={dispatch} />
