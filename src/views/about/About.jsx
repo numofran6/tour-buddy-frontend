@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Layout } from '../../shared/components';
 import { LuCake } from 'react-icons/lu';
 import { AchievementTag } from './AchievementTag';
@@ -7,6 +7,10 @@ import { BsGlobeEuropeAfrica } from 'react-icons/bs';
 import './About.css';
 
 export const About = () => {
+	useEffect(() => {
+		window.scroll(0, 0);
+	}, []);
+
 	return (
 		<Layout>
 			<main className="max-w-container padding-x py-8 mb-20 space-y-5 lg:space-y-0 lg:grid lg:grid-cols-7 lg:gap-20">

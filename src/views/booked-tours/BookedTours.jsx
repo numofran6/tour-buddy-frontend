@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Layout } from '../../shared/components';
 import { useBookedToursContext } from '../../shared/context/bookedToursContext';
 import { Button } from '@mui/material';
@@ -11,6 +11,10 @@ export const BookedTours = () => {
 		states: { tours },
 		dispatch,
 	} = useBookedToursContext();
+
+	useEffect(() => {
+		window.scroll(0, 0);
+	}, []);
 
 	return (
 		<>

@@ -1,4 +1,5 @@
 import { Link, NavLink } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import logo from '../../../assets/logo.png';
 import { BiPhone, BiLogoPaypal, BiLogoMastercard } from 'react-icons/bi';
 import { CiMail, CiMenuBurger } from 'react-icons/ci';
@@ -110,23 +111,35 @@ export const Layout = ({ children }) => {
 				</div>
 
 				<div className="space-y-5 flex flex-col">
-					<Link to={'/tours'} className="footer-link gb-transition">
+					<HashLink
+						smooth
+						to={'/#regions'}
+						className="footer-link gb-transition"
+					>
+						Regions
+					</HashLink>
+					<HashLink
+						smooth
+						to={'/#advantages'}
+						className="footer-link gb-transition"
+					>
+						Advantages
+					</HashLink>
+					<HashLink
+						smooth
+						to={'/#popular'}
+						className="footer-link gb-transition"
+					>
+						Popular places
+					</HashLink>
+				</div>
+
+				<div className="space-y-5 flex flex-col">
+					<Link smooth to={'/tours'} className="footer-link gb-transition">
 						Tours
 					</Link>
 					<Link to={'/booked-tours'} className="footer-link gb-transition">
 						Booked Tours
-					</Link>
-					<Link to={'/#popular'} className="footer-link gb-transition">
-						Popular places
-					</Link>
-				</div>
-
-				<div className="space-y-5 flex flex-col">
-					<Link to={'/#regions'} className="footer-link gb-transition">
-						Regions
-					</Link>
-					<Link to={'/#advantages'} className="footer-link gb-transition">
-						Advantages
 					</Link>
 					<Link to={'/about'} className="footer-link gb-transition">
 						About Us
@@ -134,12 +147,16 @@ export const Layout = ({ children }) => {
 				</div>
 
 				<div className="space-y-5 flex flex-col">
-					<Link to={'/#contact-us'} className="footer-link gb-transition">
+					<HashLink
+						smooth
+						to={'/#contact-us'}
+						className="footer-link gb-transition"
+					>
 						Contacts
-					</Link>
-					<Link to={'/#faqs'} className="footer-link gb-transition">
+					</HashLink>
+					<HashLink smooth to={'/#faqs'} className="footer-link gb-transition">
 						FAQ
-					</Link>
+					</HashLink>
 				</div>
 
 				<div className="space-y-5 flex flex-col">
