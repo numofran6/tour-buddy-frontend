@@ -97,3 +97,11 @@
 	@apply absolute inset-0 bg-black bg-opacity-50 
 	text-[#fcfcfc] flex flex-col justify-between p-5;
 }
+
+.css-1h51icj-MuiAutocomplete-root .MuiInput-root .MuiInput-input {
+	@apply text-white capitalize;
+}
+
+.MuiPopper-root {
+	@apply capitalize;
+}

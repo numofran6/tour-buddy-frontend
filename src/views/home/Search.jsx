@@ -114,7 +114,7 @@ export const Search = () => {
 
 					<Stack width="200px">
 						<Autocomplete
-							options={activitiesOptions.map((region) => region.label)}
+							options={activitiesOptions.map((region) => region.value)}
 							renderInput={(params) => (
 								<TextField
 									{...params}
