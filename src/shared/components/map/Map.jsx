@@ -1,31 +1,49 @@
-import Map, {
-	FullscreenControl,
-	GeolocateControl,
-	Marker,
-	NavigationControl,
-} from 'react-map-gl';
+import Map, { GeolocateControl, Marker, NavigationControl } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { useState } from 'react';
 
-export const MapComponent = () => {
-	const [lng, setLng] = useState(-0.029529);
-	const [lat, setLat] = useState(5.694385);
+export const MapComponent = ({ selectedRegions }) => {
+	const getInitialViewState = () => {
+		const longitudeValue =
+			selectedRegions[0] === 'Volta Region'
+				? 0.47028
+				: selectedRegions[0] === 'Western Region'
+				? -1.76853
+				: selectedRegions[0] === 'Northern Region'
+				? -0.84224
+				: -0.186964;
+		const latitudeValue =
+			selectedRegions[0] === 'Volta Region'
+				? 6.60391
+				: selectedRegions[0] === 'Western Region'
+				? 4.9045
+				: selectedRegions[0] === 'Northern Region'
+				? 9.40784
+				: 5.603717;
+
+		return {
+			longitude: longitudeValue,
+			latitude: latitudeValue,
+			zoom: 12,
+		};
+	};
+
+	const mapKey = selectedRegions.join(',');
 
 	return (
 		<div style={{ height: '100%', width: '100%' }}>
 			<Map
+				key={mapKey}
 				mapboxAccessToken="pk.eyJ1IjoibnVtb2ZyYW42IiwiYSI6ImNsZGRiZWFqNzAxaHYzdnJzZGsxMG5uankifQ.kKG8lHf3En9AwmENBOVmfQ"
-				initialViewState={{
-					longitude: lng,
-					latitude: lat,
-					zoom: 12,
-				}}
+				initialViewState={getInitialViewState()}
 				style={{ width: '100%' }}
 				mapStyle="mapbox://styles/mapbox/streets-v9"
 			>
-				<Marker longitude={lng} latitude={lat} />
+				<Marker
+					longitude={getInitialViewState().longitude}
+					latitude={getInitialViewState().latitude}
+				/>
+
 				<NavigationControl position="bottom-right" />
-				<FullscreenControl />
 				<GeolocateControl />
 			</Map>
 		</div>

@@ -40,7 +40,9 @@ export const Featured = () => {
 						? Array.from({ length: 4 }).map((_, index) => (
 								<div key={index} className="flex-shrink-0 min-h-[30rem]">
 									<div className="relative">
-										<CustomSkeleton width={400} height={350} />
+										<div className="w-[25rem] lg:w-[45rem]">
+											<CustomSkeleton width={'100%'} height={350} />
+										</div>
 
 										<div className="featured-container-info w-[25rem]">
 											<CustomSkeleton

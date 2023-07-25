@@ -9,7 +9,7 @@ import { useEffect } from 'react';
 import './Tours.css';
 
 export const Tours = () => {
-	const { sort, setSort } = useDestinationContext();
+	const { sort, setSort, selectedRegions } = useDestinationContext();
 
 	useEffect(() => {
 		window.scroll(0, 0);
@@ -64,8 +64,14 @@ export const Tours = () => {
 				<section className="mb-10">
 					<div className="max-w-container lg:grid lg:grid-cols-3 lg:gap-14 px-2">
 						<div className="col-span-1 py-5 space-y-4">
-							<div className="w-full h-[12rem] img-bg sidebar-border overflow-hidden">
-								<MapComponent />
+							<div>
+								<div className="w-full h-[12rem] img-bg sidebar-border overflow-hidden">
+									<MapComponent {...{ selectedRegions }} />
+								</div>
+
+								<p className="text-xs text-gray-400 flex justify-center">
+									Select one region to view location
+								</p>
 							</div>
 
 							<SearchTourForm />
