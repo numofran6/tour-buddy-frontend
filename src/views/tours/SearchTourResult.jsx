@@ -94,7 +94,7 @@ export const SearchTourResult = () => {
 	}, [destinationUrl]);
 
 	return (
-		<div className="col-span-2 p-5 pr-0" ref={resultsRef}>
+		<div className="lg:col-span-2 lg:p-5 lg:pr-0" ref={resultsRef}>
 			{isLoading || isError ? (
 				<div className="flex justify-center">
 					<CircularProgress sx={{ color: '#081922' }} size={40} />

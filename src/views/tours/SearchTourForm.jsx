@@ -30,7 +30,7 @@ export const SearchTourForm = () => {
 	};
 
 	return (
-		<form className="p-5 py-1 text-sm bg-white sidebar-border">
+		<form className="p-5 py-1 text-sm bg-white sidebar-border grid grid-cols-2 lg:grid-cols-none">
 			<div className="form-group border-b border-gray-100">
 				<h1 className="form-group-heading">Region</h1>
 				<FormCheckboxGroup

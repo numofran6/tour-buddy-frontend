@@ -20,8 +20,8 @@ export const Tours = () => {
 			<main className="mb-20">
 				<section>
 					<div className="max-w-container mt-8 mb-4 space-y-9">
-						<div className="flex items-center justify-between">
-							<h1 className="text-6xl font-semibold font-heading">
+						<div className="flex flex-col space-y-3 lg:space-y-0 lg:flex-row lg:items-center lg:justify-between padding-x">
+							<h1 className="text-4xl lg:text-6xl font-semibold font-heading">
 								Explore Through Locals
 							</h1>
 
@@ -40,7 +40,7 @@ export const Tours = () => {
 							</Box>
 						</div>
 
-						<div className="flex items-center justify-between p-8 px-16 bg-[#F8F8F8] rounded-lg">
+						<div className="hidden md:flex md:items-center md:justify-between p-8 lg:px-16 bg-[#F8F8F8] rounded-lg">
 							<p className="tag-item">
 								<BsPatchCheck className="tag-icon" />{' '}
 								<span className="tag-title">Trusted Locals</span>
@@ -62,7 +62,7 @@ export const Tours = () => {
 				</section>
 
 				<section className="mb-10">
-					<div className="max-w-container grid grid-cols-3 gap-14">
+					<div className="max-w-container lg:grid lg:grid-cols-3 lg:gap-14 px-2">
 						<div className="col-span-1 py-5 space-y-4">
 							<div className="w-full h-[12rem] img-bg sidebar-border overflow-hidden">
 								<Map />

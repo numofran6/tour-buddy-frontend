@@ -135,7 +135,7 @@ export const TourDetails = () => {
 			{tour ? (
 				<Layout>
 					<main className="max-w-container space-y-5 py-8 mb-20">
-						<div className="space-y-1">
+						<div className="space-y-1  padding-x">
 							<h1 className="font-heading text-5xl">{tour?.title}</h1>
 							<h4 className="flex items-center space-x-1 text-xl">
 								<FaMapPin className="text-[#B35C00] w-5 h-5" />{' '}
@@ -156,7 +156,7 @@ export const TourDetails = () => {
 							</h6>
 						</div>
 
-						<div className="flex items-center justify-between">
+						<div className="flex items-center justify-between  padding-x space-x-5">
 							<p className="max-w-3xl text-sm text-[#295B5F]">{tour?.desc}</p>
 
 							<IconButton

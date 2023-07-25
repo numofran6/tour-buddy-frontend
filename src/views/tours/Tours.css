@@ -19,7 +19,7 @@
 }
 
 .tag-icon {
-	@apply w-10 h-10;
+	@apply w-8 h-8 md:w-10 md:h-10;
 }
 
 .tag-title {
@@ -35,5 +35,5 @@
 }
 
 .number-of-visitors {
-	@apply border border-gray-200 px-3 py-1.5 rounded-md;
+	@apply md:border md:border-gray-200 md:px-3 md:py-1.5 text-xs md:text-sm md:rounded-md;
 }

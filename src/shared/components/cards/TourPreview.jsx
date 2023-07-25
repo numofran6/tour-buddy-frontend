@@ -6,10 +6,10 @@ export const TourPreview = ({ item }) => {
 	const navigate = useNavigate();
 
 	return (
-		<div className="h-[15rem] bg-white w-full rounded-md sidebar-border grid grid-cols-3 overflow-hidden">
+		<div className="lg:h-[15rem] bg-white w-full rounded-md sidebar-border lg:grid lg:grid-cols-3 overflow-hidden">
 			<img
 				src={item?.images[0]}
-				className="col-span-1 h-full w-full img-bg object-cover cursor-pointer"
+				className="h-[15rem] lg:col-span-1 lg:h-full w-full img-bg object-cover cursor-pointer"
 				onClick={() =>
 					navigate(`/tour/${item.title}`, { state: { tour: item } })
 				}
