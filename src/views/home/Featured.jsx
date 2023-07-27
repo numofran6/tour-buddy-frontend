@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 export const Featured = () => {
 	const scrollFeaturedRef = useRef(null);
 	const { scrollLeft, maxScroll, handleNextClick, handlePreviousClick } =
-		useScroll(scrollFeaturedRef);
+		useScroll(scrollFeaturedRef, 300);
 	const navigate = useNavigate();
 
 	const {
