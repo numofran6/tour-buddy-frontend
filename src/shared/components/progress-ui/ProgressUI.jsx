@@ -14,7 +14,7 @@ export const ProgressUI = ({
 				<h1 className="md:space-x-10 font-heading text-3xl uppercase flex flex-col md:flex-row">
 					<span>{titleNumber}</span> <span>{title}</span>{' '}
 				</h1>
-				<p className="pt-7 text-sm text-[#295B5F]">{description}</p>
+				<p className="pt-7 text-sm text-[#41a1a8]">{description}</p>
 			</div>
 		</>
 	);

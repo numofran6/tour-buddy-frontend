@@ -40,11 +40,11 @@ export const Featured = () => {
 						? Array.from({ length: 4 }).map((_, index) => (
 								<div key={index} className="flex-shrink-0 min-h-[30rem]">
 									<div className="relative">
-										<div className="w-[25rem] lg:w-[45rem]">
+										<div className="w-[22rem] sm:w-[25rem] lg:w-[45rem]">
 											<CustomSkeleton width={'100%'} height={350} />
 										</div>
 
-										<div className="featured-container-info w-[25rem]">
+										<div className="featured-container-info w-[22rem] sm:w-[25rem]">
 											<CustomSkeleton
 												width="100%"
 												height="100%"
@@ -68,11 +68,11 @@ export const Featured = () => {
 										<img
 											src={item.images[0]}
 											alt=""
-											className="w-[25rem] h-[20rem] lg:w-[45rem] lg:h-[25rem] img-bg object-cover"
+											className="w-[22rem] sm:w-[25rem] h-[20rem] lg:w-[45rem] lg:h-[25rem] img-bg object-cover"
 											loading="lazy"
 										/>
 
-										<div className="featured-container-info w-[25rem]">
+										<div className="featured-container-info w-[22rem] sm:w-[25rem]">
 											<div className="flex items-center justify-between">
 												<h1 className="text-xl flex items-center">
 													<PiMapPinLineThin className="mr-1" /> {item.title}
