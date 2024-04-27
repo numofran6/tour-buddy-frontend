@@ -6,9 +6,9 @@ import { Box, MenuItem, TextField } from '@mui/material';
 import { useDestinationContext } from '../../shared/context/destinationsContext';
 import { SearchTourResult } from './SearchTourResult';
 import { useEffect } from 'react';
-import './Tours.css';
+import './index.scss';
 
-export const Tours = () => {
+export default () => {
 	const { sort, setSort, selectedRegions } = useDestinationContext();
 
 	useEffect(() => {

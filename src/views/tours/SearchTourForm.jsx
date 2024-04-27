@@ -1,5 +1,6 @@
-import { Box, Slider } from '@mui/material';
+import { Box, Slider, Checkbox } from '@mui/material';
 import { useDestinationContext } from '../../shared/context/destinationsContext';
+import { Fragment } from 'react';
 
 export const SearchTourForm = () => {
 	const {
@@ -85,18 +86,17 @@ export const SearchTourForm = () => {
 
 function FormCheckboxGroup({ name, options, selectedValues, onChange }) {
 	return (
-		<div className="form-group-content">
+		<div>
 			{options.map((option) => (
-				<label key={option.value} className="label-item">
-					<input
-						type="checkbox"
+				<p key={option.label}>
+					<Checkbox
 						name={name}
 						value={option.value}
 						checked={selectedValues.includes(option.value)}
 						onChange={onChange}
 					/>
 					<span>{option.label}</span>
-				</label>
+				</p>
 			))}
 		</div>
 	);

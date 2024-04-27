@@ -1,0 +1,22 @@
+.achievement-icon {
+	@apply w-14 h-14 lg:w-28 lg:h-28;
+}
+
+.page-title {
+	font-size: 60px;
+	font-weight: 600;
+	text-transform: capitalize;
+	line-height: 1.1em;
+	font-family: 'Oswald';
+
+	@media (max-width: 767px) {
+		font-size: 34px;
+    	max-width: 300px;
+	}
+
+
+	@media (max-width: 1024px) {
+		font-size: 50px;
+    	max-width: 450px;
+	}
+}
