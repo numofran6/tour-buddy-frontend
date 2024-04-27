@@ -24,7 +24,7 @@ export default () => {
 
 	return (
 		<Layout>
-			<main className="mb-20">
+			<main className="mb-20 will-animate fade-in">
 				<section>
 					<div className="max-w-container mt-8 mb-4 space-y-9">
 						<div className="flex flex-col space-y-3 lg:space-y-0 lg:flex-row lg:items-center lg:justify-between padding-x">

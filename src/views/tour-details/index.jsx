@@ -141,7 +141,7 @@ export default () => {
 		<Layout>
 			{tour ? (
 				<>
-					<main className="max-w-container space-y-5 py-8 mb-20">
+					<main className="max-w-container space-y-5 py-8 mb-20 will-animate fade-in">
 						<div className="space-y-1 padding-x tour-details">
 							<h1 className="text-5xl">{tour?.title}</h1>
 
@@ -318,7 +318,7 @@ export default () => {
 					)}
 				</>
 			) : (
-				<div className="no-page-container">
+				<div className="no-page-container will-animate fade-in">
 					<h1 className="text-5xl font-bold">404 | Tour Not Found</h1>
 				</div>
 			)}

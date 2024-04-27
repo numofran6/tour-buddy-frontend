@@ -20,22 +20,22 @@ export default () => {
 					alt=""
 					width={1920}
 					height={528}
-					className="bg-beach"
+					className="bg-beach fade-in"
 				/>
-				<h1 className="heading-primary">Explore.</h1>
+				<h1 className="heading-primary fade-in">Explore.</h1>
 				<img
 					src={explorer}
 					alt=""
 					width={264}
 					height={730}
-					className="explorer"
+					className="explorer fade-scale-down"
 				/>
 				<img
 					src={bgFloor}
 					alt=""
 					width={1920}
 					height={259}
-					className="bg-floor"
+					className="bg-floor fade-in"
 				/>
 			</div>
 

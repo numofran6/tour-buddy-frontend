@@ -17,7 +17,7 @@ export default () => {
 
 	return (
 		<Layout>
-			<main className="max-w-container padding-x py-8 mb-20 space-y-5 lg:space-y-0 lg:grid lg:grid-cols-7 lg:gap-20">
+			<main className="max-w-container padding-x py-8 mb-20 space-y-5 lg:space-y-0 lg:grid lg:grid-cols-7 lg:gap-20 will-animate fade-in">
 				<div className="col-span-4">
 					<img
 						src={aboutBg}

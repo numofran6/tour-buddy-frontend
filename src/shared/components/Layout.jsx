@@ -6,9 +6,10 @@ import { HashLink } from 'react-router-hash-link';
 import { BiPhone, BiLogoPaypal, BiLogoMastercard } from 'react-icons/bi';
 import { CiMail } from 'react-icons/ci';
 import { RiVisaFill } from 'react-icons/ri';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { HiOutlineMenuAlt3 } from 'react-icons/hi';
 import { AiOutlineClose } from 'react-icons/ai';
+import { BsArrowUp } from 'react-icons/bs';
 
 /**
  * Internal dependencies
@@ -19,6 +20,8 @@ import './Layout.scss';
 
 export default ({ children, className = '', title = '' }) => {
 	const [openMenu, setOpenMenu] = useState(false);
+	const [showScroll, setShowScroll] = useState(false);
+
 	const navLinkStyle = ({ isActive }) => {
 		if (isActive) {
 			return {
@@ -32,6 +35,40 @@ export default ({ children, className = '', title = '' }) => {
 			};
 		}
 	};
+
+	const checkScrollTop = () => {
+		if (!showScroll && window.pageYOffset > 400) {
+			setShowScroll(true);
+		} else if (showScroll && window.pageYOffset <= 400) {
+			setShowScroll(false);
+		}
+	};
+
+	const scrollToTop = () => {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	};
+
+	useEffect(() => {
+		window.addEventListener('scroll', checkScrollTop);
+		return () => {
+			window.removeEventListener('scroll', checkScrollTop);
+		};
+	}, [showScroll]);
+
+	useEffect(() => {
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach((entry) => {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('animate');
+				} else {
+					entry.target.classList.remove('animate');
+				}
+			});
+		});
+
+		const animatableElements = document.querySelectorAll('.will-animate');
+		animatableElements.forEach((el) => observer.observe(el));
+	});
 
 	return (
 		<>
@@ -168,6 +205,15 @@ export default ({ children, className = '', title = '' }) => {
 					</div>
 				</div>
 			</footer>
+
+			<button
+				className="slide-up"
+				onClick={scrollToTop}
+				style={{ display: showScroll ? 'flex' : 'none' }}
+			>
+				<span className="overlay" />
+				<BsArrowUp className="arrow-up" />
+			</button>
 		</>
 	);
 };

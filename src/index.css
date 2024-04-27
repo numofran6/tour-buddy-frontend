@@ -32,3 +32,156 @@ body {
 .padding-x {
 	@apply px-7 xl:px-0;
 }
+
+.slide-up {
+	width: 35px;
+	height: 35px;
+	background-color: #fff;
+	border-radius: 50%;
+
+	position: fixed;
+	right: 2.5%;
+	bottom: 65px;
+
+	z-index: 50;
+
+	@media (max-width: 650px) {
+		z-index: 40;
+	}
+
+	@media (max-width: 900px) {
+		right: 5.5%;
+	}
+
+	@media (min-width: 1390px) {
+		left: calc((100% + 85.5rem) / 2);
+		right: auto;
+		bottom: 35px;
+	}
+
+	box-shadow: 0 0 0 1px #242424 inset;
+	transform: translateZ(0);
+}
+
+.slide-up .arrow-up {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	transition: all 500ms cubic-bezier(.77,0,.175,1);
+}
+
+.slide-up .overlay {
+	position: absolute;
+	width: 105%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%) scale(0,0);
+	transition: all 500ms cubic-bezier(.77,0,.175,1);
+}
+
+.slide-up .overlay::after {
+	background-color: #242424;
+	position: relative;
+	content: '';
+	border-radius: 50%;
+	display: block;
+	padding-top: 100%;
+}
+
+.slide-up:hover .overlay {
+	transform: translate(-50%,-50%) scale(1,1);
+}
+
+.slide-up:hover .arrow-up {
+	color: #fff;
+}
+
+.fade-in-up.animate {
+	animation-timing-function: cubic-bezier(.165,.84,.44,1);
+	animation-name: AuxFadeInUp;
+	animation-duration: 1s;
+	animation-fill-mode: both;
+	opacity: 0;
+}
+
+.fade-in-left.animate {
+	animation-timing-function: cubic-bezier(.165,.84,.44,1);
+	animation-name: AuxFadeInLeft;
+	animation-duration: 1s;
+	animation-fill-mode: both;
+	opacity: 0;
+}
+
+.fade-in-right.animate {
+	animation-duration: 1.5s;
+  animation-delay: .35s;
+  animation-timing-function: cubic-bezier(.165,.84,.44,1);
+  animation-name: AuxFadeInRight;
+  opacity: 0;
+  animation-fill-mode: both;
+}
+
+.fade-scale-down.animate {
+	animation-timing-function: cubic-bezier(.165,.84,.44,1);
+	animation-name: AuxScaleDown;
+	animation-duration: 1s;
+	animation-fill-mode: both;
+	opacity: 0;
+}
+
+.fade-in.animate {
+	animation-timing-function: cubic-bezier(.25,.46,.45,.94);
+	animation-name: AuxFadeIn;
+	animation-duration: 1s;
+	animation-fill-mode: both;
+	opacity: 0;
+}
+
+@keyframes AuxFadeInLeft {
+	0% {
+		opacity: 0;
+		transform: translate3d(-27px,0,0);
+	}
+	100% {
+		opacity: 1;
+		transform: none;
+	}
+}
+@keyframes AuxFadeInRight {
+	0% {
+		opacity: 0;
+		transform: translate3d(27px,0,0);
+	}
+	100% {
+		opacity: 1;
+		transform: none;
+	}
+}
+@keyframes AuxFadeInUp {
+	0% {
+		opacity: 0;
+		transform: translate3d(0,27px,0);
+	}
+	100% {
+		opacity: 1;
+		transform: none;
+	}
+}
+@keyframes AuxScaleDown {
+	0% {
+		transform: scale(1.1,1.1);
+	}
+	100% {
+		transform: none;
+		opacity: 1;
+	}
+}
+@keyframes AuxFadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}

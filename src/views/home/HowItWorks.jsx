@@ -9,7 +9,7 @@ export default () => {
 		<>
 			<div className="py-28 bg-[#242424] text-[#fcfcfc] padding-x">
 				<div className="max-w-container flex flex-col space-y-10 md:space-y-0 md:flex-row md:space-x-10 lg:space-x-20">
-					<div className="space-y-16 md:w-1/2">
+					<div className="space-y-16 md:w-1/2 will-animate fade-in-left">
 						<SectionHeading
 							inverse
 							showPaginationBtns={false}
@@ -29,7 +29,7 @@ export default () => {
 						/>
 					</div>
 
-					<div className="md:w-1/2 space-y-10 flex flex-col justify-between">
+					<div className="md:w-1/2 space-y-10 flex flex-col justify-between will-animate fade-in-right">
 						<ProgressUI
 							titleNumber="01"
 							title="Choose Region"

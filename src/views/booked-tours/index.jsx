@@ -26,7 +26,7 @@ export default () => {
 	return (
 		<Layout>
 			{tours.length > 0 ? (
-				<main className="max-w-container min-h-[70vh] py-8 mb-20 padding-x">
+				<main className="max-w-container min-h-[70vh] py-8 mb-20 padding-x will-animate fade-in">
 					<div className="mb-16 space-y-1 title">
 						<h1 className="text-4xl lg:text-5xl font-semibold">
 							Manage Booked Tours
@@ -45,7 +45,7 @@ export default () => {
 					</div>
 				</main>
 			) : (
-				<div className="no-page-container">
+				<div className="no-page-container will-animate fade-in">
 					<h1 className="text-5xl font-bold">
 						You haven't booked any tour yet.
 					</h1>

@@ -6,7 +6,7 @@ import { advantages } from '../../shared/utils';
 export default () => {
 	return (
 		<>
-			<div className="space-y-10 max-w-container">
+			<div className="space-y-10 max-w-container will-animate fade-scale-down">
 				<header className="advantages-header px-7 xl:px-0">
 					<div>
 						<h1>Why choose us?</h1>

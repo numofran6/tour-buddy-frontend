@@ -39,7 +39,7 @@ export default () => {
 					}
 				/>
 
-				<div className="regions-container hide-scrollbar max-w-container">
+				<div className="regions-container fade-in-up will-animate hide-scrollbar max-w-container">
 					{isLoading || isError
 						? Array.from({ length: 4 }).map((_, i) => (
 								<div key={i} className="regions-content ">

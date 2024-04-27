@@ -12,7 +12,7 @@ import { Layout } from '../../shared/components';
 export default () => {
 	return (
 		<Layout>
-			<div className="no-page-container">
+			<div className="no-page-container will-animate fade-in">
 				<h1 className="text-4xl font-heading">404 | Page Not Found</h1>
 
 				<Link to={'/'}>
