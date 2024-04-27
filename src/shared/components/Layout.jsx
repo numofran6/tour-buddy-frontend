@@ -101,14 +101,14 @@ export default ({ children, className = '', title = '' }) => {
 					</div>
 
 					{openMenu && (
-						<div className="menu-modal">
+						<div className="menu-modal fade-in animate">
 							<div className="flex justify-end">
 								<button onClick={() => setOpenMenu(false)}>
 									<AiOutlineClose className="w-8 h-8" />
 								</button>
 							</div>
 
-							<div className="menu-modal-links gb-transition">
+							<div className="menu-modal-links gb-transition fade-in-up animate">
 								<div>
 									<NavLink to={'/'} style={navLinkStyle}>
 										Home
