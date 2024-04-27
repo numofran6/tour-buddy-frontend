@@ -101,7 +101,7 @@ export default ({ children, className = '', title = '' }) => {
 					</div>
 
 					{openMenu && (
-						<div className="menu-modal fade-in animate">
+						<div className="menu-modal">
 							<div className="flex justify-end">
 								<button onClick={() => setOpenMenu(false)}>
 									<AiOutlineClose className="w-8 h-8" />
