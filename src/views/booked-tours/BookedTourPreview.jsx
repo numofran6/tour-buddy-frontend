@@ -19,32 +19,26 @@ export const BookedTourPreview = ({ item, dispatch }) => {
 				style={{ backgroundImage: `url(${item.images[0]})` }}
 			>
 				<div className="booked-tour-preview-content">
-					<div className="space-y-1 ">
+					<div className="space-y-1">
 						<a
 							onClick={() =>
 								navigate(`/tour/${item.title}`, { state: { tour: item } })
 							}
-							className="font-heading text-3xl cursor-pointer gb-transition hover:text-yellow-600"
+							className="font-heading text-3xl cursor-pointer gb-transition"
 						>
 							{item.title}
 						</a>
 
-						<h6 className="flex items-center space-x-1">
-							<FaMapPin className="text-amber-500" /> <span>{item.region}</span>
+						<h6 className="flex items-center space-x-1 text-sm">
+							<FaMapPin />
+							<span>{item.region}</span>
 						</h6>
 
-						<Rating
-							value={item.rating}
-							precision={0.5}
-							size="small"
-							readOnly
-							className="mr-1"
-						/>
-						<h6>
+						<h6 className="text-sm">
 							<span className="font-semibold">Activity:</span> {item.activity}
 						</h6>
 
-						<div className="text-sm flex items-center justify-between">
+						<div className="text-sm flex flex-wrap items-center justify-between">
 							<h6>
 								<span className="font-semibold">Date:</span> {item.bookingDate}
 							</h6>
@@ -56,16 +50,15 @@ export const BookedTourPreview = ({ item, dispatch }) => {
 						</div>
 					</div>
 
-					<p className="text-xs">{item.desc.slice(0, 250)}...</p>
+					<p className="text-[0.9rem] desc">{item.desc.slice(0, 250)}...</p>
 
 					<div className="flex justify-end">
-						<IconButton
-							style={{ color: '#fcfcfc', backgroundColor: '#295B5F' }}
-							className="w-24 h-24 rounded-full flex flex-col justify-center"
+						<button
+							className="primary-btn"
 							onClick={() => setShowOptionsPanel(true)}
 						>
-							<p className="text-xs">Delete</p>
-						</IconButton>
+							Delete
+						</button>
 					</div>
 				</div>
 			</div>

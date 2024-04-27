@@ -1,0 +1,96 @@
+.book-now-btn {
+	@apply w-24 h-24 rounded-full 
+  flex flex-col justify-center;
+}
+
+.book-now-btn-text {
+	@apply text-xs uppercase text-center;
+}
+
+.book-tour-modal {
+	@apply fixed inset-0 bg-black bg-opacity-90 z-50 
+  flex flex-col justify-center items-center overflow-auto py-10;
+}
+
+.modal-close-btn {
+	@apply w-7 h-7 hover:text-red-600;
+}
+
+.book-tour-modal-container {
+	@apply w-[90%] md:w-[30rem] min-h-[70vh] bg-[#fcfcfc] 
+  rounded-md p-8 overflow-auto;
+}
+
+.calendar-container {
+	@apply p-3 py-4 bg-gray-200 hover:bg-gray-300 
+	cursor-pointer hover:text-[#399399];
+}
+
+.calender-icon {
+	@apply w-5 h-5;
+}
+
+.css-zjq1i3 {
+	@apply mx-auto;
+}
+
+.tour-details {
+	h1 {
+		font-family: 'oswald';
+		text-transform: uppercase;
+		font-size: 3.5rem;
+		font-weight: 500;
+		margin-bottom: 0.7rem;
+	}
+
+	> div {
+		display: flex;
+		gap: 20px;
+		flex-wrap: wrap;
+
+		h2, h4 {
+			font-size: .88em;
+			color: #888;
+		}
+	}
+}
+
+.star {
+	transform: translateY(4px);
+}
+
+.desc {
+	font-family: 'montserrat';
+}
+
+.primary-btn {
+	padding: 2.1375em 2.5em;
+	text-transform: uppercase;
+	text-shadow: 0 2px 0 #292929;
+	color: #fff;
+	font-size: .8125em;
+  	font-weight: 700;
+
+	display: inline-block;
+	position: relative;
+	line-height: 100%;
+	border: none;
+	cursor: pointer;
+	overflow: hidden;
+	z-index: 1;
+	transition: all 450ms;
+
+	background-color: #3d3d3d !important;
+}
+
+.react-photo-gallery--gallery {
+	img {
+		max-height: 400px;
+	}
+}
+
+.no-page-container {
+	h1 {
+		font-family: 'oswald';
+	}
+}

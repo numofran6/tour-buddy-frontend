@@ -99,7 +99,7 @@ export default ({ children, className = '', title = '' }) => {
 
 			{children}
 
-			<section id="contact-us" className="mt-[10rem]">
+			<section id="contact-us" className="mt-[5rem]">
 				<ContactUs />
 			</section>
 			<footer className="max-w-container padding-x footer-container">

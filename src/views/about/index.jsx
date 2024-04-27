@@ -1,6 +1,13 @@
+/**
+ * External dependencies
+ */
 import { useEffect } from 'react';
-import { Layout } from '../../shared/components';
+
+/**
+ * Internal dependencies
+ */
 import './index.scss';
+import { Layout } from '../../shared/components';
 import { aboutBg, signage } from '../../assets/images';
 
 export default () => {

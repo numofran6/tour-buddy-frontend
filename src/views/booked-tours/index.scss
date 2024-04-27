@@ -1,0 +1,32 @@
+.booked-tour-preview {
+	@apply bg-[#081922] text-[#fcfcfc]  min-h-[22rem] 
+  rounded-md;
+}
+
+.booked-tour-preview-content {
+	@apply bg-black bg-opacity-40 p-7 space-y-7 
+  	flex flex-col justify-center rounded-md;
+
+	a {
+		font-family: 'oswald';
+		font-weight: 500;
+	}
+
+	.primary-btn {
+		background-color: transparent !important;
+		border: 1px solid #fff !important;
+	}
+}
+
+.title {
+	color: #242424;
+
+	h1 {
+		font-family: 'oswald';
+		margin-bottom: 15px;
+	}
+
+	h6 {
+		font-family: 'montserrat';
+	}
+}

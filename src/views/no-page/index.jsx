@@ -1,8 +1,15 @@
-import { Link } from 'react-router-dom';
-import { Layout } from '../../shared/components';
+/**
+ * External dependencies
+ */
 import { Button } from '@mui/material';
 
-export const NoPage = () => {
+/**
+ * Internal dependencies
+ */
+import { Link } from 'react-router-dom';
+import { Layout } from '../../shared/components';
+
+export default () => {
 	return (
 		<Layout>
 			<div className="no-page-container">

@@ -1,5 +1,7 @@
+/**
+ * External dependencies
+ */
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Layout } from '../../shared/components';
 import { IconButton, MenuItem, Rating, TextField } from '@mui/material';
 import { FaMapPin } from 'react-icons/fa';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -10,15 +12,20 @@ import { SlCalender } from 'react-icons/sl';
 import { DateRange } from 'react-date-range';
 import { AiOutlineMail } from 'react-icons/ai';
 import { format } from 'date-fns';
-import { useFetch } from '../../shared/custom-hooks';
-import { useBookedToursContext } from '../../shared/context/bookedToursContext';
 import Gallery from 'react-photo-gallery';
 import Carousel, { Modal, ModalGateway } from 'react-images';
+
+/**
+ * Internal dependencies
+ */
+import { Layout } from '../../shared/components';
+import { useFetch } from '../../shared/custom-hooks';
+import { useBookedToursContext } from '../../shared/context';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
-import './TourDetails.css';
+import './index.scss';
 
-export const TourDetails = () => {
+export default () => {
 	const location = useLocation();
 	const tour = location.state?.tour;
 	const [openDate, setOpenDate] = useState(false);
@@ -131,41 +138,48 @@ export const TourDetails = () => {
 	}, []);
 
 	return (
-		<>
+		<Layout>
 			{tour ? (
-				<Layout>
+				<>
 					<main className="max-w-container space-y-5 py-8 mb-20">
-						<div className="space-y-1  padding-x">
-							<h1 className="font-heading text-5xl">{tour?.title}</h1>
-							<h4 className="flex items-center space-x-1 text-xl">
-								<FaMapPin className="text-[#B35C00] w-5 h-5" />{' '}
-								<span>{tour?.region}</span>
-							</h4>
-							<div className="flex items-center">
-								<span className="font-semibold">Rating:</span>
-								<Rating
-									value={tour.rating}
-									precision={0.5}
-									size="small"
-									readOnly
-									className="ml-2"
-								/>
+						<div className="space-y-1 padding-x tour-details">
+							<h1 className="text-5xl">{tour?.title}</h1>
+
+							<div>
+								<h2 className="flex items-center space-x-1 text-xl">
+									<FaMapPin className="text-[#888] w-5 h-5" />{' '}
+									<span>{tour?.region}</span>
+								</h2>
+								<div className="">
+									<span className="text-[0.88em] font-semibold text-[#888]">
+										Rating:
+									</span>
+									<Rating
+										value={tour.rating}
+										precision={0.5}
+										size="small"
+										readOnly
+										className="ml-2 star"
+									/>
+								</div>
+								<h4>
+									<span className="font-semibold">Price:</span> ${tour.price}
+								</h4>
 							</div>
-							<h6>
-								<span className="font-semibold">Price:</span> ${tour.price}
-							</h6>
 						</div>
 
-						<div className="flex items-center justify-between  padding-x space-x-5">
-							<p className="max-w-3xl text-sm text-[#295B5F]">{tour?.desc}</p>
+						<div className="flex flex-wrap items-center justify-between padding-x gap-10">
+							<p className="desc max-w-3xl text-[0.9em] text-[#444]">
+								{tour?.desc}
+							</p>
 
-							<IconButton
+							<button
 								onClick={() => setOpenModal(true)}
-								style={{ color: '#fcfcfc', backgroundColor: '#295B5F' }}
-								className="book-now-btn"
+								type="submit"
+								className="primary-btn"
 							>
-								<p className="book-now-btn-text">Book Tour</p>
-							</IconButton>
+								Book Tour
+							</button>
 						</div>
 
 						<Gallery photos={imagesWithDimensions} onClick={openLightbox} />
@@ -203,7 +217,7 @@ export const TourDetails = () => {
 												<span>Email Address</span>
 											</label>
 										}
-										variant="filled"
+										variant="outlined"
 										value={email}
 										onChange={(e) => setEmail(e.target.value)}
 										error={formError.email.status && !emailPattern.test(email)}
@@ -225,7 +239,7 @@ export const TourDetails = () => {
 										value={tourBuddy}
 										onChange={(e) => setTourBuddy(e.target.value)}
 										fullWidth
-										variant="filled"
+										variant="outlined"
 										error={formError.tourBuddy.status && !tourBuddy}
 										helperText={
 											formError.tourBuddy.status &&
@@ -290,27 +304,24 @@ export const TourDetails = () => {
 									</div>
 
 									<div className="flex justify-end w-full">
-										<IconButton
+										<button
+											onClick={() => setOpenModal(true)}
 											type="submit"
-											style={{ color: '#fcfcfc', backgroundColor: '#295B5F' }}
-											className="book-now-btn"
+											className="primary-btn"
 										>
-											<p className="book-now-btn-text">Book Tour</p>
-										</IconButton>
+											Book Tour
+										</button>
 									</div>
 								</form>
 							</div>
 						</div>
 					)}
-				</Layout>
+				</>
 			) : (
-				<Layout>
-					<div className="no-page-container">
-						<BsEmojiFrownFill className="w-20 h-20" />
-						<h1 className="text-4xl font-heading">404 | Tour Not Found</h1>
-					</div>
-				</Layout>
+				<div className="no-page-container">
+					<h1 className="text-5xl font-bold">404 | Tour Not Found</h1>
+				</div>
 			)}
-		</>
+		</Layout>
 	);
 };
