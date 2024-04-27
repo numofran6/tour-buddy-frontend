@@ -1,18 +1,17 @@
-import { useRef } from 'react';
-import {
-	CustomSkeleton,
-	SectionHeading,
-	UnderlineBtn,
-} from '../../shared/components';
-import { Button } from '@mui/material';
-import { useFetch, useScroll } from '../../shared/custom-hooks';
-import { useDestinationContext } from '../../shared/context/destinationsContext';
+/**
+ * External dependencies
+ */
 import { useNavigate } from 'react-router-dom';
+import { FiArrowUpRight } from 'react-icons/fi';
 
-export const Regions = () => {
-	const scrollRegionsRef = useRef(null);
-	const { scrollLeft, maxScroll, handleNextClick, handlePreviousClick } =
-		useScroll(scrollRegionsRef, 300);
+/**
+ * Internal dependencies
+ */
+import { CustomSkeleton, SectionHeading } from '../../shared/components';
+import { useDestinationContext } from '../../shared/context';
+import { useFetch } from '../../shared/custom-hooks';
+
+export default () => {
 	const { setSelectedRegions } = useDestinationContext();
 	const navigate = useNavigate();
 
@@ -38,31 +37,22 @@ export const Regions = () => {
 					description={
 						'Immerse yourself in the culture of Ghana through locals, learn the history, visit the most beautiful places, create memories that you will never forget in your life.'
 					}
-					{...{ maxScroll, scrollLeft, handlePreviousClick, handleNextClick }}
 				/>
 
-				<div
-					className="regions-container hide-scrollbar"
-					ref={scrollRegionsRef}
-				>
+				<div className="regions-container hide-scrollbar max-w-container">
 					{isLoading || isError
 						? Array.from({ length: 4 }).map((_, i) => (
 								<div key={i} className="regions-content ">
 									<CustomSkeleton height={288} />
 
-									<CustomSkeleton variant="text" height={60} width="35%" />
-
-									<div>
-										<CustomSkeleton variant="text" />
-										<CustomSkeleton variant="text" />
-										<CustomSkeleton variant="text" />
+									<div className="flex justify-between items-center flex-wrap gap-3 px-7 sm:px-0">
+										<CustomSkeleton variant="text" width={100} />
+										<CustomSkeleton variant="text" width={100} />
 									</div>
-
-									<CustomSkeleton height={50} width={120} />
 								</div>
 						  ))
 						: allRegions?.map((region, i) => (
-								<div key={region.name} className="regions-content ">
+								<div key={region.name} className="regions-content">
 									<img
 										onClick={() => handleRegionClick(region.name)}
 										src={region.image}
@@ -71,16 +61,16 @@ export const Regions = () => {
 										loading="lazy"
 									/>
 
-									<h1 className="text-2xl">{region.name}</h1>
+									<div className=" flex justify-between items-center flex-wrap gap-3 px-7 sm:px-0">
+										<h1 className="text-2xl">{region.name}</h1>
 
-									<p className="text-sm">{region.desc.slice(0, 225)}...</p>
-
-									<Button
-										onClick={() => handleRegionClick(region.name)}
-										style={{ textTransform: 'inherit' }}
-									>
-										<UnderlineBtn title="Explore Now" />
-									</Button>
+										<button onClick={() => handleRegionClick(region.name)}>
+											<p className="border-b-2 border-[#081922] text-[#081922] flex items-center text-xs font-semibold pl-1">
+												Explore Now
+												<FiArrowUpRight className="ml-5 w-5 h-5 hover:-translate-y-1 transition duration-200 ease-in-out" />
+											</p>
+										</button>
+									</div>
 								</div>
 						  ))}
 				</div>

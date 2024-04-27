@@ -1,8 +1,11 @@
+/**
+ * External dependencies
+ */
 import { Button, Rating } from '@mui/material';
 import { GrLocationPin } from 'react-icons/gr';
 import { useNavigate } from 'react-router-dom';
 
-export const TourPreview = ({ item }) => {
+export default ({ item }) => {
 	const navigate = useNavigate();
 
 	return (

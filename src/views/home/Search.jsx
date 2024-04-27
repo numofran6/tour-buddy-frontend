@@ -11,8 +11,10 @@ import {
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useDestinationContext } from '../../shared/context/destinationsContext';
+import { Select } from '../../shared/components';
+import { displayError } from '../../shared/utils';
 
-export const Search = () => {
+export default () => {
 	const navigate = useNavigate();
 	const {
 		setSelectedRegions,
@@ -23,7 +25,10 @@ export const Search = () => {
 	} = useDestinationContext();
 	const [isLoading, setIsLoading] = useState(false);
 
-	const numberOfTourists = ['1 - 25', '25 - 50'];
+	const numberOfTourists = [
+		{ value: '1 - 25', label: '1 - 25' },
+		{ value: '25 - 50', label: '25 - 50' },
+	];
 
 	const [region, setRegion] = useState(null);
 	const [activity, setActivity] = useState(null);
@@ -75,112 +80,77 @@ export const Search = () => {
 	};
 
 	return (
-		<div
-			style={{
-				backgroundImage:
-					'url(https://images.unsplash.com/photo-1522678073884-26b1b87526e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1535&q=80)',
-			}}
-			className="bg-cover"
-		>
-			<div className="search-container">
-				<form onSubmit={handleSubmit} className="header-search-form">
-					<Stack width="200px">
-						<Autocomplete
-							options={regionsOptions.map((region) => region.value)}
-							renderInput={(params) => (
-								<TextField
-									{...params}
-									variant="standard"
-									label={
-										<div className="search-input-label">
-											<SlLocationPin className="search-input-icon" />{' '}
-											<span>Select Region</span>
-										</div>
-									}
-									style={{
-										borderBottom: '1px solid white',
-									}}
-									error={formError.region && !region}
-								/>
-							)}
-							value={region}
-							onChange={(e, newValue) => setRegion(newValue)}
-						/>
-
-						{formError.region && !region && (
-							<p className="text-red-400 text-xs">Required *</p>
-						)}
-					</Stack>
-
-					<Stack width="200px">
-						<Autocomplete
-							options={activitiesOptions.map((region) => region.value)}
-							renderInput={(params) => (
-								<TextField
-									{...params}
-									variant="standard"
-									label={
-										<div className="search-input-label">
-											<GoTelescope className="search-input-icon" />{' '}
-											<span>Select Activity</span>
-										</div>
-									}
-									style={{
-										borderBottom: '1px solid white',
-									}}
-									error={formError.activity && !activity}
-								/>
-							)}
-							value={activity}
-							onChange={(e, newValue) => setActivity(newValue)}
-						/>
-
-						{formError.activity && !activity && (
-							<p className="text-red-400 text-xs">Required *</p>
-						)}
-					</Stack>
-
-					<Stack width="200px">
-						<Autocomplete
-							options={numberOfTourists}
-							renderInput={(params) => (
-								<TextField
-									{...params}
-									variant="standard"
-									label={
-										<div className="search-input-label">
-											<RxPerson className="search-input-icon" />{' '}
-											<span>Number of People</span>
-										</div>
-									}
-									style={{
-										borderBottom: '1px solid white',
-									}}
-									error={formError.maxTourists && !maxTourists}
-								/>
-							)}
-							value={maxTourists}
-							onChange={(e, newValue) => setMaxTourists(newValue)}
-						/>
-
-						{formError.maxTourists && !maxTourists && (
-							<p className="text-red-400 text-xs">Required *</p>
-						)}
-					</Stack>
-
-					<IconButton
-						type="submit"
-						style={{ color: '#fcfcfc', backgroundColor: '#081921' }}
-						className="w-24 h-24 rounded-full flex flex-col justify-center"
-					>
-						{isLoading ? (
-							<CircularProgress sx={{ color: '#f4eaf4' }} size={24} />
-						) : (
-							<p className="text-xs uppercase text-center">Search Tour</p>
-						)}
-					</IconButton>
-				</form>
+		<div className="search-container max-w-container">
+			<div>
+				<h1>Book your tour</h1>
+				<p>There are many tours tailored to give you the best experience.</p>
 			</div>
+
+			<form onSubmit={handleSubmit}>
+				<div className="header-search-form px-7">
+					<div>
+						<Select
+							value={
+								region ? (
+									region
+								) : (
+									<>
+										<SlLocationPin className="search-input-icon" />
+										<span>Select Region</span>
+									</>
+								)
+							}
+							options={regionsOptions}
+							onChange={setRegion}
+						/>
+						{formError.region && !region && displayError('Required')}
+					</div>
+
+					<div>
+						<Select
+							value={
+								activity ? (
+									activity
+								) : (
+									<>
+										<GoTelescope className="search-input-icon" />{' '}
+										<span>Select Activity</span>
+									</>
+								)
+							}
+							options={activitiesOptions}
+							onChange={setActivity}
+						/>
+						{formError.activity && !activity && displayError('Required')}
+					</div>
+
+					<div>
+						<Select
+							value={
+								maxTourists ? (
+									maxTourists
+								) : (
+									<>
+										<RxPerson className="search-input-icon" />{' '}
+										<span>Number of People</span>
+									</>
+								)
+							}
+							options={numberOfTourists}
+							onChange={setMaxTourists}
+						/>
+						{formError.maxTourists && !maxTourists && displayError('Required')}
+					</div>
+				</div>
+
+				<button type="submit" className="primary-btn mt-16">
+					{isLoading ? (
+						<CircularProgress sx={{ color: '#f4eaf4' }} size={24} />
+					) : (
+						<span>Search Tour</span>
+					)}
+				</button>
+			</form>
 		</div>
 	);
 };

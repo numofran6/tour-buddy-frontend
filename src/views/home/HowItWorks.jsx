@@ -1,10 +1,13 @@
+/**
+ * Internal dependencies
+ */
 import { howitworks } from '../../assets/images';
 import { ProgressUI, SectionHeading } from '../../shared/components';
 
-export const HowItWorks = () => {
+export default () => {
 	return (
 		<>
-			<div className="py-28 bg-[#081921] text-[#fcfcfc] padding-x">
+			<div className="py-28 bg-[#242424] text-[#fcfcfc] padding-x">
 				<div className="max-w-container flex flex-col space-y-10 md:space-y-0 md:flex-row md:space-x-10 lg:space-x-20">
 					<div className="space-y-16 md:w-1/2">
 						<SectionHeading

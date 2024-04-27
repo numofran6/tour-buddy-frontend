@@ -1,7 +1,10 @@
+/**
+ * External dependencies
+ */
 import Map, { GeolocateControl, Marker, NavigationControl } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-export const MapComponent = ({ selectedRegions }) => {
+export default ({ selectedRegions }) => {
 	const getInitialViewState = () => {
 		const longitudeValue =
 			selectedRegions[0] === 'Volta Region'

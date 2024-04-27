@@ -1,0 +1,329 @@
+$black: #242424;
+
+.index-nav {
+	background-color: black;
+	color: #fff;
+}
+
+.primary-btn {
+	padding: 2.1375em 2.5em;
+	text-transform: uppercase;
+	background-color: #3d3d3d;
+	text-shadow: 0 2px 0 #292929;
+	color: #fff;
+	font-size: .8125em;
+  	font-weight: 700;
+
+	display: inline-block;
+	position: relative;
+	line-height: 100%;
+	margin-bottom: 1em;
+	border: none;
+	cursor: pointer;
+	overflow: hidden;
+	z-index: 1;
+	transition: all 450ms;
+}
+
+.button-outlined {
+	padding: 12px 30px;
+	background-color: #fff;
+	text-shadow: 0 0 0 rgba(0,0,0,.3);
+	text-transform: uppercase;
+	border-radius: 100em;
+	font-size: 11px;
+  	font-weight: 700;
+	line-height: 17px;
+	color: $black;
+	font-family: 'poppins';
+	border: 1px solid $black;
+	position: relative;
+	transition: background-color .45s cubic-bezier(.75,.1,.25,.9), color .45s cubic-bezier(.75,.1,.25,.9);
+
+	&:hover {
+		color: #fff;
+		background-color: $black;
+	}
+}
+
+
+.header-container {
+	position: relative;
+	max-width: 100%;
+	overflow: hidden;
+
+	min-height: 55vh;
+	background-image: url("../../../assets/bg-sky.png");
+
+	img {
+		filter: blur(0);
+		will-change: background-color,opacity;
+		transform: translate3d(0,0,0);
+		transition: filter .3s;
+		perspective-origin: center;
+	}
+
+	.bg-ceil {
+		position: absolute;
+		z-index: 10;
+	}
+
+	.bg-beach {
+		position: absolute;
+		bottom: 25px;
+	}
+
+	.explorer, .heading-primary {
+		position: absolute;
+
+		transition-timing-function: cubic-bezier(.165,.84,.44,1);
+		transition: all .25s ease-out;
+	}
+
+	.explorer {
+		z-index: 20;
+		bottom: 20px;
+		left: 50%;
+		transform: translateX(-50%);
+
+		width: 18%;
+	}
+
+	.bg-floor {
+		z-index: 30;
+		position: absolute;
+		bottom: 0;
+	}
+
+	.heading-primary {
+		top: 50%;
+		transform: translateY(-50%) translateX(-50%);
+		left: 50%;
+
+		font-size: 5.5rem;
+		font-weight: 900;
+		line-height: 238px;
+		letter-spacing: -2.8px;
+		color: darken(rgba(224,224,224,.55), 20%);
+		text-align: center;
+		margin-left: auto !important;
+		margin-right: auto !important;
+		transition: all .25s ease-out;
+		font-family: 'montserrat';
+		text-transform: uppercase;
+	}
+
+	@media (min-width: 530px) {
+		min-height: 500px;
+
+		.heading-primary {
+			font-size: 6.5rem;
+		}
+	}
+
+	@media (min-width: 800px) {
+		min-height: 550px;
+
+		.heading-primary {
+			color: rgba(224,224,224,.55);
+			font-size: 9rem;
+			letter-spacing: -7.8px;
+		}
+
+		.bg-beach {
+			bottom: 50px;
+		}
+	}
+
+	@media (min-width: 1000px) {
+		min-height: 650px;
+
+		.explorer {
+			width: 15%;
+		}
+
+		.heading-primary {
+			font-size: 12rem;
+		}
+	}
+
+	@media (min-width: 1200px) {
+		min-height: 850px;
+
+		.bg-beach {
+			bottom: 55px;
+		}
+
+		.heading-primary {
+			font-size: 14rem;
+		}
+	}
+}
+
+.contact-container {
+	@apply space-y-10 py-10 md:flex md:flex-col 
+	md:justify-center lg:ml-[3.7rem];
+
+	.contact-info {
+		@apply flex flex-col space-y-10 
+		lg:space-y-0 lg:flex-row lg:space-x-20 text-sm;
+	}
+}
+
+
+.search-container {
+	@apply flex flex-col items-center justify-center text-center gap-16 py-16;
+
+	> div {
+		h1 {
+			font-size: 40px;
+			font-weight: 700;
+			text-transform: capitalize;
+			letter-spacing: -.6px;
+			margin-bottom: 10px;
+			font-family: 'oswald';
+		}
+
+		p {
+			@apply text-gray-600;
+			font-size: 16px;
+			font-weight: 500;
+		}
+	}
+	
+	.header-search-form {
+		@apply flex flex-col items-center space-y-8 lg:space-y-0 lg:flex-row lg:space-x-12;
+
+		> div {
+			position: relative;
+		}
+
+		.btn-select {
+			background-color: transparent;
+			color: #242424;
+
+			.search-input-icon {
+				transform: none !important;
+				@apply w-5 h-5 inline mr-5;
+			}
+		}
+		
+		.display-error {
+			position: absolute;
+			top: 100%;
+			font-size: 11px;
+		}
+	}
+
+	.primary-btn {
+		background-color: #3d3d3d;
+	}
+}
+
+/* Hide scrollbar for Chrome, Safari, and Opera */
+.hide-scrollbar::-webkit-scrollbar {
+	display: none;
+}
+
+/* Hide scrollbar for IE, Edge, and Firefox */
+.hide-scrollbar {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.progress-ui {
+	h1 {
+		font-family: 'oswald';
+	}
+}
+
+.regions-container {
+	@apply grid md:grid-cols-2 gap-10;
+
+	.regions-content {
+		@apply space-y-3;
+	}
+}
+
+
+.featured-container-info {
+	@apply relative lg:absolute lg:-left-56 lg:-bottom-10 
+	w-[21rem] min-h-[15rem] p-5 bg-[#081922] space-y-1 lg:space-y-0 
+	text-[#fcfcfc] z-10 flex flex-col 
+	justify-between;
+}
+
+.featured-container-btn {
+	@apply w-28 h-28 rounded-full 
+	flex flex-col justify-center items-center;
+}
+
+.featured-skeleton-btn {
+	@apply absolute bottom-2 right-4 
+	w-28 h-28 rounded-full overflow-hidden;
+}
+
+.ghana-text {
+	@apply bg-gradient-to-r from-red-600 via-yellow-200 to-green-600 
+	inline-block text-transparent bg-clip-text;
+}
+
+.advantages-container {
+	@apply grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 lg:gap-10;
+}
+
+.advantage {
+	@apply absolute inset-0 bg-black bg-opacity-50 
+	text-[#fcfcfc] flex flex-col justify-between p-5;
+}
+
+.css-1h51icj-MuiAutocomplete-root .MuiInput-root .MuiInput-input {
+	color: white;
+	text-transform: capitalize;
+}
+
+.MuiPopper-root {
+	text-transform: capitalize;
+}
+
+.advantages-header {
+	@apply grid md:grid-cols-2 gap-10;
+
+	> div {
+		h1 {
+			font-size: 20px;
+
+			@media (max-width: 1024px) {
+				font-size: 18px;
+				font-weight: 500;
+  				text-transform: capitalize;
+				letter-spacing: 1px;
+				line-height: 1.4;
+				transition: all .25s ease-out;
+			}
+		}
+
+		h3 {
+			font-size: 50px;
+			font-weight: 700;
+			text-transform: capitalize;
+			letter-spacing: -.75px;
+			max-width: 510px;
+			font-family: 'oswald';
+		}
+	}
+
+	p {
+		font-size: 15px;
+  		font-weight: 400;
+		line-height: 1.5;
+  		font-style: normal;
+		
+		max-width: 510px;
+
+		@media (min-width: 768px) {
+			margin: auto 0;
+		margin-left: auto;
+		}
+	}
+}

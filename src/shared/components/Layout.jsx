@@ -1,14 +1,22 @@
+/**
+ * External dependencies
+ */
 import { Link, NavLink } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
-import logo from '../../../assets/logo.png';
 import { BiPhone, BiLogoPaypal, BiLogoMastercard } from 'react-icons/bi';
 import { CiMail, CiMenuBurger } from 'react-icons/ci';
 import { RiVisaFill } from 'react-icons/ri';
 import { useState } from 'react';
 import { TfiClose } from 'react-icons/tfi';
-import './Layout.css';
 
-export const Layout = ({ children }) => {
+/**
+ * Internal dependencies
+ */
+import { ContactUs } from './ContactUs';
+import { logo } from '../../assets/images';
+import './Layout.scss';
+
+export default ({ children, className = '', title = '' }) => {
 	const [openMenu, setOpenMenu] = useState(false);
 	const navLinkStyle = ({ isActive }) => {
 		if (isActive) {
@@ -26,68 +34,74 @@ export const Layout = ({ children }) => {
 
 	return (
 		<>
-			<nav className="nav-container padding-x max-w-container">
-				<Link to={'/'} className="nav-title">
-					Tour Buddy
-				</Link>
+			<title>{title} - Tour Buddy</title>
+			<nav className={` ${className}`}>
+				<div className="max-w-container nav-container padding-x">
+					<Link to={'/'} className="nav-title">
+						Tour Buddy
+					</Link>
 
-				<div className="nav-menu-desktop gb-transition">
-					<NavLink to={'/'} style={navLinkStyle}>
-						Home
-					</NavLink>
-					<NavLink to={'/tours'} style={navLinkStyle}>
-						Tours
-					</NavLink>
-					<NavLink to={'/booked-tours'} style={navLinkStyle}>
-						Booked Tours
-					</NavLink>
-					<NavLink to={'/about'} style={navLinkStyle}>
-						About
-					</NavLink>
-				</div>
-
-				<div className="lg:hidden">
-					<button onClick={() => setOpenMenu(true)}>
-						<CiMenuBurger className="w-8 h-8" />
-					</button>
-				</div>
-
-				{openMenu && (
-					<div className="menu-modal">
-						<div className="flex justify-end">
-							<button onClick={() => setOpenMenu(false)}>
-								<TfiClose className="w-10 h-10" />
-							</button>
-						</div>
-
-						<div className="menu-modal-links gb-transition">
-							<div>
-								<NavLink to={'/'} style={navLinkStyle}>
-									Home
-								</NavLink>
-							</div>
-							<div>
-								<NavLink to={'/tours'} style={navLinkStyle}>
-									Tours
-								</NavLink>
-							</div>
-							<div>
-								<NavLink to={'/booked-tours'} style={navLinkStyle}>
-									Booked Tours
-								</NavLink>
-							</div>
-							<div>
-								<NavLink to={'/about'} style={navLinkStyle}>
-									About
-								</NavLink>
-							</div>
-						</div>
+					<div className="nav-menu-desktop gb-transition">
+						<NavLink to={'/'} style={navLinkStyle}>
+							Home
+						</NavLink>
+						<NavLink to={'/tours'} style={navLinkStyle}>
+							Tours
+						</NavLink>
+						<NavLink to={'/booked-tours'} style={navLinkStyle}>
+							Booked Tours
+						</NavLink>
+						<NavLink to={'/about'} style={navLinkStyle}>
+							About
+						</NavLink>
 					</div>
-				)}
+
+					<div className="lg:hidden">
+						<button onClick={() => setOpenMenu(true)}>
+							<CiMenuBurger className="w-8 h-8" />
+						</button>
+					</div>
+
+					{openMenu && (
+						<div className="menu-modal">
+							<div className="flex justify-end">
+								<button onClick={() => setOpenMenu(false)}>
+									<TfiClose className="w-10 h-10" />
+								</button>
+							</div>
+
+							<div className="menu-modal-links gb-transition">
+								<div>
+									<NavLink to={'/'} style={navLinkStyle}>
+										Home
+									</NavLink>
+								</div>
+								<div>
+									<NavLink to={'/tours'} style={navLinkStyle}>
+										Tours
+									</NavLink>
+								</div>
+								<div>
+									<NavLink to={'/booked-tours'} style={navLinkStyle}>
+										Booked Tours
+									</NavLink>
+								</div>
+								<div>
+									<NavLink to={'/about'} style={navLinkStyle}>
+										About
+									</NavLink>
+								</div>
+							</div>
+						</div>
+					)}
+				</div>
 			</nav>
 
 			{children}
 
+			<section id="contact-us">
+				<ContactUs />
+			</section>
 			<footer className="max-w-container padding-x footer-container">
 				<div className="space-y-5 text-xs">
 					<Link to={'/'} className="flex items-center space-x-3">
@@ -125,12 +139,8 @@ export const Layout = ({ children }) => {
 					>
 						Advantages
 					</HashLink>
-					<HashLink
-						smooth
-						to={'/#popular'}
-						className="footer-link gb-transition"
-					>
-						Popular places
+					<HashLink smooth to={'/#faqs'} className="footer-link gb-transition">
+						FAQ
 					</HashLink>
 				</div>
 
@@ -144,19 +154,6 @@ export const Layout = ({ children }) => {
 					<Link to={'/about'} className="footer-link gb-transition">
 						About Us
 					</Link>
-				</div>
-
-				<div className="space-y-5 flex flex-col">
-					<HashLink
-						smooth
-						to={'/#contact-us'}
-						className="footer-link gb-transition"
-					>
-						Contacts
-					</HashLink>
-					<HashLink smooth to={'/#faqs'} className="footer-link gb-transition">
-						FAQ
-					</HashLink>
 				</div>
 
 				<div className="space-y-5 flex flex-col">

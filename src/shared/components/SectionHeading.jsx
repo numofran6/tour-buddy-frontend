@@ -1,12 +1,14 @@
+/**
+ * External dependencies
+ */
 import { IconButton } from '@mui/material';
 import { BsArrowRight, BsArrowLeft } from 'react-icons/bs';
-import './SectionHeading.css';
 
-export const SectionHeading = ({
+export default ({
 	heading,
 	subHeading,
 	description,
-	showPaginationBtns = true,
+	showPaginationBtns,
 	inverse = false,
 	handlePreviousClick = () => {},
 	handleNextClick = () => {},
@@ -24,12 +26,10 @@ export const SectionHeading = ({
 				<h1 className="uppercase">{heading}</h1>
 			</div>
 
-			<h3 className="font-heading text-2xl font-medium max-w-md">
-				{subHeading}
-			</h3>
-
 			<div className="flex flex-col md:flex-row md:items-center md:justify-between">
-				<p className="ml-10 text-sm max-w-lg">{description}</p>
+				<h3 className="font-heading text-2xl font-medium max-w-md">
+					{subHeading}
+				</h3>
 
 				{showPaginationBtns && (
 					<div className="flex items-center justify-end md:justify-start space-x-3">
@@ -67,6 +67,10 @@ export const SectionHeading = ({
 					</div>
 				)}
 			</div>
+
+			{description && (
+				<p className="sm:ml-10 text-sm max-w-lg">{description}</p>
+			)}
 		</div>
 	);
 };

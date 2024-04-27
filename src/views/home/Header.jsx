@@ -1,22 +1,45 @@
-import { Search } from './Search';
+/**
+ * Internal dependencies
+ */
+import Search from './Search';
+import { bgBeach, bgCeil, bgFloor, explorer } from '../../assets/images';
 
-export const Header = () => {
+export default () => {
 	return (
 		<header className="home-bg-color">
-			<div className="max-w-container padding-x header-container">
-				<h1 className="text-5xl lg:text-7xl uppercase font-medium font-heading">
-					Discover the real <span className="">Ghana</span>
-				</h1>
-				<p className="max-w-3xl text-sm">
-					Immerse yourself in the culture of Ghana through locals, learn the
-					history, visit the most beautiful places, create memories that you
-					will never forget in your life.
-				</p>
+			<div className="header-container">
+				<img
+					src={bgCeil}
+					alt=""
+					width={1920}
+					height={458}
+					className="bg-ceil"
+				/>
+				<img
+					src={bgBeach}
+					alt=""
+					width={1920}
+					height={528}
+					className="bg-beach"
+				/>
+				<h1 className="heading-primary">Explore.</h1>
+				<img
+					src={explorer}
+					alt=""
+					width={264}
+					height={730}
+					className="explorer"
+				/>
+				<img
+					src={bgFloor}
+					alt=""
+					width={1920}
+					height={259}
+					className="bg-floor"
+				/>
 			</div>
 
-			<section>
-				<Search />
-			</section>
+			<Search />
 		</header>
 	);
 };

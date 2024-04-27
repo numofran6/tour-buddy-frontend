@@ -1,5 +1,0 @@
-.pagination-btns {
-	@apply w-10 h-10 border
-     flex items-center justify-center 
-    rounded-full;
-}

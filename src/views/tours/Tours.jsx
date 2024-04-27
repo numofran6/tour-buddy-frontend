@@ -1,5 +1,5 @@
 import { AiOutlineDollar, AiOutlineLock } from 'react-icons/ai';
-import { Layout, MapComponent } from '../../shared/components';
+import { Layout, Map } from '../../shared/components';
 import { SearchTourForm } from './SearchTourForm';
 import { BsEmojiHeartEyes, BsPatchCheck } from 'react-icons/bs';
 import { Box, MenuItem, TextField } from '@mui/material';
@@ -66,7 +66,7 @@ export const Tours = () => {
 						<div className="col-span-1 py-5 space-y-4">
 							<div>
 								<div className="w-full h-[12rem] img-bg sidebar-border overflow-hidden">
-									<MapComponent {...{ selectedRegions }} />
+									<Map {...{ selectedRegions }} />
 								</div>
 
 								<p className="text-xs text-gray-400 flex justify-center">

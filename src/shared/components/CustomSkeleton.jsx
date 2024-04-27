@@ -1,10 +1,13 @@
+/**
+ * External dependencies
+ */
 import { Skeleton } from '@mui/material';
 import React from 'react';
 
-export const CustomSkeleton = ({
+export default ({
 	variant = 'rectangular',
 	width = '100%',
-	background = '#f2f4f5',
+	background = '#e4e5e6',
 	height,
 }) => {
 	return (

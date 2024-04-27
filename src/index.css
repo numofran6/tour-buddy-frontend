@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-	font-family: 'Poppins', sans-serif, 'Baskerville';
+	font-family: 'Poppins', 'montserrat', sans-serif, 'Baskerville', 'oswald';
 	color: #081922;
 	background-color: #fcfcfc;
 }
@@ -17,7 +17,7 @@ body {
 }
 
 .max-w-container {
-	@apply max-w-[80rem] mx-auto;
+	@apply max-w-[85rem] mx-auto;
 }
 
 .img-bg {

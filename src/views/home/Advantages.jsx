@@ -1,20 +1,23 @@
-import { SectionHeading } from '../../shared/components';
-import { advantages } from '../../shared/utils/data';
+/**
+ * Internal dependencies
+ */
+import { advantages } from '../../shared/utils';
 
-export const Advantages = () => {
+export default () => {
 	return (
 		<>
 			<div className="space-y-10 max-w-container">
-				<SectionHeading
-					heading={'Advantages'}
-					subHeading={
-						"That's why you should choose us for your next exciting journey"
-					}
-					description={
-						'Travelling with us means living the best momments of your life without worrying about the quality of service and safety.'
-					}
-					showPaginationBtns={false}
-				/>
+				<header className="advantages-header px-7 xl:px-0">
+					<div>
+						<h1>Why choose us?</h1>
+						<h3>An exceptionally unique experience tailored to you</h3>
+					</div>
+
+					<p>
+						Travelling with us means living the best momments of your life
+						without worrying about the quality of service and safety.
+					</p>
+				</header>
 
 				<div className="padding-x advantages-container">
 					{advantages.map((item, index) => (

@@ -1,12 +1,19 @@
-import { CustomSkeleton, SectionHeading } from '../../shared/components';
+/**
+ * External dependencies
+ */
+import { BsPeople } from 'react-icons/bs';
+import { useNavigate } from 'react-router-dom';
 import { IconButton, Rating } from '@mui/material';
 import { useRef } from 'react';
 import { PiMapPinLineThin } from 'react-icons/pi';
-import { useFetch, useScroll } from '../../shared/custom-hooks';
-import { BsPeople } from 'react-icons/bs';
-import { useNavigate } from 'react-router-dom';
 
-export const Featured = () => {
+/**
+ * Internal dependencies
+ */
+import { CustomSkeleton, SectionHeading } from '../../shared/components';
+import { useFetch, useScroll } from '../../shared/custom-hooks';
+
+export default () => {
 	const scrollFeaturedRef = useRef(null);
 	const { scrollLeft, maxScroll, handleNextClick, handlePreviousClick } =
 		useScroll(scrollFeaturedRef, 300);
