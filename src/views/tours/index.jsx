@@ -1,11 +1,18 @@
+/**
+ * External dependencies
+ */
 import { AiOutlineDollar, AiOutlineLock } from 'react-icons/ai';
-import { Layout, Map } from '../../shared/components';
-import { SearchTourForm } from './SearchTourForm';
 import { BsEmojiHeartEyes, BsPatchCheck } from 'react-icons/bs';
 import { Box, MenuItem, TextField } from '@mui/material';
+import { useEffect } from 'react';
+
+/**
+ * Internal dependencies
+ */
 import { useDestinationContext } from '../../shared/context/destinationsContext';
 import { SearchTourResult } from './SearchTourResult';
-import { useEffect } from 'react';
+import { Layout, Map } from '../../shared/components';
+import { SearchTourForm } from './SearchTourForm';
 import './index.scss';
 
 export default () => {

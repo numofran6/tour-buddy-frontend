@@ -4,10 +4,11 @@
 import { Link, NavLink } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import { BiPhone, BiLogoPaypal, BiLogoMastercard } from 'react-icons/bi';
-import { CiMail, CiMenuBurger } from 'react-icons/ci';
+import { CiMail } from 'react-icons/ci';
 import { RiVisaFill } from 'react-icons/ri';
 import { useState } from 'react';
-import { TfiClose } from 'react-icons/tfi';
+import { HiOutlineMenuAlt3 } from 'react-icons/hi';
+import { AiOutlineClose } from 'react-icons/ai';
 
 /**
  * Internal dependencies
@@ -58,7 +59,7 @@ export default ({ children, className = '', title = '' }) => {
 
 					<div className="lg:hidden">
 						<button onClick={() => setOpenMenu(true)}>
-							<CiMenuBurger className="w-8 h-8" />
+							<HiOutlineMenuAlt3 className="w-8 h-8" />
 						</button>
 					</div>
 
@@ -66,7 +67,7 @@ export default ({ children, className = '', title = '' }) => {
 						<div className="menu-modal">
 							<div className="flex justify-end">
 								<button onClick={() => setOpenMenu(false)}>
-									<TfiClose className="w-10 h-10" />
+									<AiOutlineClose className="w-8 h-8" />
 								</button>
 							</div>
 
