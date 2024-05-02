@@ -30,7 +30,13 @@ body {
 }
 
 .padding-x {
-	@apply px-7 xl:px-0;
+	@apply px-7;
+
+}
+@media (min-width: 1400px) {
+	.padding-x {
+		@apply px-0;
+	}
 }
 
 .slide-up {
