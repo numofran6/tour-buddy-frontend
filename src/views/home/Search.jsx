@@ -81,7 +81,7 @@ export default () => {
 
 	return (
 		<div className="search-container max-w-container">
-			<div>
+			<div className="padding-x">
 				<h1>Book your tour</h1>
 				<p>There are many tours tailored to give you the best experience.</p>
 			</div>
