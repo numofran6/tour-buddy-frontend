@@ -13,7 +13,6 @@ import { DateRange } from 'react-date-range';
 import { AiOutlineMail } from 'react-icons/ai';
 import { format } from 'date-fns';
 import Gallery from 'react-photo-gallery';
-import Carousel, { Modal, ModalGateway } from 'react-images';
 
 /**
  * Internal dependencies
@@ -184,7 +183,7 @@ export default () => {
 
 						<Gallery photos={imagesWithDimensions} onClick={openLightbox} />
 
-						<ModalGateway>
+						{/* <ModalGateway>
 							{viewerIsOpen ? (
 								<Modal onClose={closeLightbox}>
 									<Carousel
@@ -193,7 +192,7 @@ export default () => {
 									/>
 								</Modal>
 							) : null}
-						</ModalGateway>
+						</ModalGateway> */}
 					</main>
 
 					{openModal && (
