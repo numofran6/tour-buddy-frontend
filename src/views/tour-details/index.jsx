@@ -12,7 +12,8 @@ import { SlCalender } from 'react-icons/sl';
 import { DateRange } from 'react-date-range';
 import { AiOutlineMail } from 'react-icons/ai';
 import { format } from 'date-fns';
-import Gallery from 'react-photo-gallery';
+import { RowsPhotoAlbum } from "react-photo-album";
+import "react-photo-album/rows.css";
 
 /**
  * Internal dependencies
@@ -181,7 +182,9 @@ export default () => {
 							</button>
 						</div>
 
-						<Gallery photos={imagesWithDimensions} onClick={openLightbox} />
+						{/* <Gallery photos={imagesWithDimensions} onClick={openLightbox} /> */}
+
+						<RowsPhotoAlbum photos={imagesWithDimensions} />
 
 						{/* <ModalGateway>
 							{viewerIsOpen ? (
